@@ -31,6 +31,7 @@ configurations {
 minecraft {
     version = project.forgeVersion
     runDir = "run"
+    coreMod = mixinCoreMod
     mappings = project.mcpVersion
     makeObfSourceJar = false
 }
@@ -49,6 +50,7 @@ repositories {
 }
 
 dependencies {
+    // class patching
     shade('org.spongepowered:mixin:0.7.4-SNAPSHOT') {
         exclude module: 'launchwrapper'
         exclude module: 'guava'
@@ -56,8 +58,11 @@ dependencies {
         exclude module: 'commons-io'
     }
 
+    // event system
     shade 'com.github.Gavhack-development:Quasar:1.0'
     shade 'net.jodah:typetools:0.4.4'
+
+    // discord rpc
     shade 'club.minnced:java-discord-rpc:2.0.1'
 }
 
@@ -74,6 +79,8 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude "mcmod.info"
     }
+
+    rename '(.+_at.cfg)', 'META-INF/$1'
 }
 
 mixin {
@@ -90,6 +97,7 @@ jar {
                 'FMLCorePluginContainsFMLMod': 'true',
                 'FMLCorePlugin': mixinCoreMod,
                 'ForceLoadAsMod': 'true',
+                'FMLAT': 'gavhack_at.cfg'
         )
     }
     configurations.shade.each { dep ->

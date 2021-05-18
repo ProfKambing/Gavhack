@@ -3,9 +3,9 @@ package me.gavin.gavhack;
 import me.gavin.gavhack.manager.DiscordManager;
 import me.gavin.gavhack.manager.ModuleManager;
 import me.gavin.gavhack.util.ForgeEventTranslator;
+import me.gavin.quasar.EventSystem;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import me.gavin.quasar.EventSystem;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

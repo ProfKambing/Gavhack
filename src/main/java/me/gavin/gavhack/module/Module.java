@@ -19,7 +19,7 @@ public abstract class Module {
 
     public boolean enabled;
 
-    public KeybindSetting keybind;
+    public final KeybindSetting keybind;
 
     public Module(String name, String description, Category category) {
         this.name = name;

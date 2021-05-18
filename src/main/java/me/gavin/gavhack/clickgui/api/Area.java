@@ -10,4 +10,8 @@ public abstract class Area {
         this.width = width;
         this.height = height;
     }
+
+    public boolean isMouseInside(int mouseX, int mouseY) {
+        return mouseX > x && mouseX < x + width && mouseY > y && mouseY < y + height;
+    }
 }

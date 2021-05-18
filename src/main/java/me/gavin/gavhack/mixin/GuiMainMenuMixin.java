@@ -1,6 +1,5 @@
 package me.gavin.gavhack.mixin;
 
-import javafx.scene.paint.Color;
 import me.gavin.gavhack.Gavhack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiMainMenu;

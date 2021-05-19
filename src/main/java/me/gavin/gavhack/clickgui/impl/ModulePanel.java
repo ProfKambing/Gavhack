@@ -31,6 +31,15 @@ public class ModulePanel extends AbstractPanel<ModuleButton> implements ITypeabl
     }
 
     @Override
+    protected void handleMouseRelease(int mouseX, int mouseY, int mouseButton) {
+        if (open) {
+            for (AbstractPanelComponent button : buttons) {
+                button.mouseReleased(mouseX, mouseY, mouseButton);
+            }
+        }
+    }
+
+    @Override
     public void handlePanelClick(int mouseX, int mouseY, int mouseButton) {
         if (open) {
             for (AbstractPanelComponent button : buttons) {

@@ -34,7 +34,11 @@ public abstract class AbstractPanel<T extends AbstractPanelComponent> extends Ab
         if (mouseButton == 0) {
             stopDragging();
         }
+
+        handleMouseRelease(mouseX, mouseY, mouseButton);
     }
+
+    protected abstract void handleMouseRelease(int mouseX, int mouseY, int mouseButton);
 
     public abstract void handlePanelClick(int mouseX, int mouseY, int mouseButton);
 

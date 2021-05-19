@@ -26,7 +26,7 @@ public abstract class Module {
         this.description = description;
         this.category = category;
 
-        this.keybind = new KeybindSetting("Keybind", 0);
+        this.keybind = new KeybindSetting("Bind", 0);
         this.settings.add(keybind);
     }
 

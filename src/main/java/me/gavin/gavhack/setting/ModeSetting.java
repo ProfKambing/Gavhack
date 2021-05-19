@@ -35,4 +35,8 @@ public class ModeSetting extends Setting {
 
         return -1;
     }
+
+    public String getMode() {
+        return modes[modeIndex];
+    }
 }

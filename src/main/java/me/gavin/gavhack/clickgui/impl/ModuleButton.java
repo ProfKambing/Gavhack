@@ -7,8 +7,12 @@ import me.gavin.gavhack.clickgui.api.AbstractPanelComponent;
 import me.gavin.gavhack.clickgui.api.Area;
 import me.gavin.gavhack.clickgui.impl.settings.BooleanElement;
 import me.gavin.gavhack.clickgui.impl.settings.KeybindElement;
+import me.gavin.gavhack.clickgui.impl.settings.ModeElement;
+import me.gavin.gavhack.clickgui.impl.settings.SliderElement;
 import me.gavin.gavhack.module.Module;
 import me.gavin.gavhack.setting.BooleanSetting;
+import me.gavin.gavhack.setting.ModeSetting;
+import me.gavin.gavhack.setting.NumberSetting;
 import me.gavin.gavhack.setting.Setting;
 import me.gavin.gavhack.util.Utils;
 import net.minecraft.client.gui.Gui;
@@ -31,8 +35,16 @@ public class ModuleButton extends AbstractPanelComponent {
                         new Area(x + 3, y + 3, 10, 10));
                 ele.yOffset += yOffset;
                 this.settingComponents.add(ele);
-                yOffset += 14;
+            } else if (s instanceof ModeSetting) {
+                ModeElement ele = new ModeElement((ModeSetting) s, x, y, width, 14);
+                ele.yOffset += yOffset;
+                this.settingComponents.add(ele);
+            } else if (s instanceof NumberSetting) {
+                SliderElement ele = new SliderElement((NumberSetting)s, x, y, width, 14);
+                ele.yOffset += yOffset;
+                this.settingComponents.add(ele);
             }
+            yOffset += 14;
         }
         KeybindElement bindEle = new KeybindElement(parent.keybind, x, y, width, 14);
         bindEle.yOffset = yOffset;
@@ -94,7 +106,15 @@ public class ModuleButton extends AbstractPanelComponent {
     }
 
     @Override
-    public void keyTyped(char typedChar, int keycode) { }
+    public void keyTyped(char typedChar, int keycode) {
+        if (open) {
+            for (AbstractOffsettable setting : settingComponents) {
+                if (setting instanceof KeybindElement) {
+                    ((KeybindElement) setting).keyTyped(typedChar, keycode);
+                }
+            }
+        }
+    }
 
     public void updateChildren() {
         for (AbstractOffsettable setting : settingComponents) {
@@ -103,6 +123,17 @@ public class ModuleButton extends AbstractPanelComponent {
             if (setting instanceof BooleanElement) {
                 ((BooleanElement)setting).button.x = setting.x + 2;
                 ((BooleanElement)setting).button.y = setting.y + 2;
+            }
+        }
+    }
+
+    @Override
+    public void mouseReleased(int mouseX, int mouseY, int mouseButton) {
+        if (open) {
+            for (AbstractOffsettable setting : settingComponents) {
+                if (setting instanceof SliderElement) {
+                    ((SliderElement)setting).mouseReleased(mouseX, mouseY, mouseButton);
+                }
             }
         }
     }

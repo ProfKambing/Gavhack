@@ -2,7 +2,7 @@ package me.gavin.gavhack.clickgui.api;
 
 import java.util.ArrayList;
 
-public abstract class AbstractPanelComponent extends AbstractOffsettable implements ITypeable {
+public abstract class AbstractPanelComponent extends AbstractOffsettable implements ITypeable, IReleaseable {
 
     public ArrayList<AbstractOffsettable> settingComponents;
 

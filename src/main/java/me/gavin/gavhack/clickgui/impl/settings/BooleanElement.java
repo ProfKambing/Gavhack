@@ -43,7 +43,7 @@ public class BooleanElement extends AbstractOffsettable {
             color = Color.YELLOW.getRGB();
         }
 
-        Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(parent.name, x + 3f + button.width, y + 1f, color);
+        Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(parent.name, x + 4f + button.width, y + 1f, color);
         Gui.drawRect(button.x, button.y, button.x + button.width, button.y + button.height, buttonColor);
 
         if (button.isMouseInside(mouseX, mouseY))

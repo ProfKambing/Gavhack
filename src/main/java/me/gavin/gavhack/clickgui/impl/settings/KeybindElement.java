@@ -6,6 +6,8 @@ import me.gavin.gavhack.clickgui.api.AbstractOffsettable;
 import me.gavin.gavhack.clickgui.api.ITypeable;
 import me.gavin.gavhack.setting.KeybindSetting;
 import me.gavin.gavhack.util.Utils;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
@@ -30,18 +32,25 @@ public class KeybindElement extends AbstractOffsettable implements ITypeable {
 
     @Override
     public void render(int mouseX, int mouseY, float partialTicks) {
+        Gui.drawRect(x + width - 1, y, x + width, y + height, Gavhack.INSTANCE.colorManager.asColor().getRGB());
 
         int color = -1;
+        int bcolor = Gavhack.INSTANCE.colorManager.asColor().getRGB();
 
-        if (isMouseInside(mouseX, mouseY))
+        ChatFormatting cf = ChatFormatting.WHITE;
+
+        if (isMouseInside(mouseX, mouseY)) {
             color = Color.YELLOW.getRGB();
+            bcolor = color;
+        }
 
         if (listening) {
             Gavhack.INSTANCE.fontRenderer.drawStringWithShadow("Listening...", x + 1f, y + 1f, color);
         } else {
             Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(
-                    ChatFormatting.WHITE + "Bind <" + ChatFormatting.RESET + Keyboard.getKeyName(parent.bind) + ChatFormatting.WHITE + ">",
-                    x + 1f, y + 1f, Gavhack.INSTANCE.colorManager.asColor().getRGB());
+                    cf + parent.name + " <" + ChatFormatting.RESET + Keyboard.getKeyName(parent.bind) + cf + ">",
+                    x + 1f, y + 1f, bcolor);
+
         }
     }
 
@@ -53,6 +62,7 @@ public class KeybindElement extends AbstractOffsettable implements ITypeable {
             } else {
                 parent.bind = keycode;
             }
+            listening = false;
         }
     }
 }

@@ -64,6 +64,9 @@ dependencies {
 
     // discord rpc
     shade 'club.minnced:java-discord-rpc:2.0.1'
+
+    // slick (for font renderer)
+    shade 'org.slick2d:slick2d-core:1.0.2'
 }
 
 processResources {

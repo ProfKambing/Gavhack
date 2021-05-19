@@ -42,4 +42,9 @@ public class ForgeEventTranslator {
             }
         }
     }
+
+    @SubscribeEvent
+    public void onTick(TickEvent.ClientTickEvent event) {
+        Gavhack.INSTANCE.colorManager.updateColor();
+    }
 }

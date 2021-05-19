@@ -3,6 +3,8 @@ package me.gavin.gavhack.manager;
 import me.gavin.gavhack.module.Category;
 import me.gavin.gavhack.module.Module;
 import me.gavin.gavhack.module.impl.AntiFog;
+import me.gavin.gavhack.module.impl.ClickGUI;
+import me.gavin.gavhack.module.impl.ColorModule;
 import me.gavin.gavhack.module.impl.Fullbright;
 
 import java.util.ArrayList;
@@ -28,6 +30,8 @@ public class ModuleManager {
         // Player
 
         // Client
+        this.modules.add(new ClickGUI());
+        this.modules.add(new ColorModule());
     }
 
     public Module getModule(Class<? extends Module> clazz) {

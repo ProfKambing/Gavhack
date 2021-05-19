@@ -35,15 +35,15 @@ public abstract class Module {
     }
 
     public void enable() {
-        enabled = true;
         onEnable();
+        enabled = true;
         gavhack.eventSys.subscribe(this);
     }
 
     public void disable() {
         gavhack.eventSys.unsubscribe(this);
-        onDisable();
         enabled = false;
+        onDisable();
     }
 
     protected void onEnable() { }

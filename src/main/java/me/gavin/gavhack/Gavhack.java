@@ -1,13 +1,21 @@
 package me.gavin.gavhack;
 
+import me.gavin.gavhack.clickgui.impl.GUI;
+import me.gavin.gavhack.manager.ColorManager;
 import me.gavin.gavhack.manager.DiscordManager;
 import me.gavin.gavhack.manager.ModuleManager;
 import me.gavin.gavhack.util.ForgeEventTranslator;
+import me.gavin.gavhack.util.font.SalFontRenderer;
 import me.gavin.quasar.EventSystem;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.awt.*;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 @Mod(
         modid = Gavhack.MOD_ID,
@@ -26,8 +34,11 @@ public class Gavhack {
 
     public Logger logger;
     public EventSystem eventSys;
+    public SalFontRenderer fontRenderer;
     public ModuleManager moduleManager;
+    public ColorManager colorManager;
     public DiscordManager discordManager;
+    public GUI clickGui;
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
@@ -38,14 +49,23 @@ public class Gavhack {
         eventSys = new EventSystem();
         logger.info("Event system initialized");
 
-        new ForgeEventTranslator();
-        logger.info("Forge event translator initialized");
+        fontRenderer = new SalFontRenderer("muli-semibold", 18);
+        logger.info("Font renderer initialized");
 
         discordManager = new DiscordManager();
         logger.info("Discord manager initialized");
 
         moduleManager = new ModuleManager();
         logger.info("Module manager initialized");
+
+        colorManager = new ColorManager();
+        logger.info("Color manager initialized");
+
+        clickGui = new GUI();
+        logger.info("Click GUI initialized");
+
+        new ForgeEventTranslator();
+        logger.info("Forge event translator initialized");
 
         logger.info(Gavhack.MOD_NAME + " finished initialization");
 

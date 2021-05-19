@@ -1,6 +1,6 @@
 package me.gavin.gavhack.clickgui.api;
 
-public abstract class Area {
+public class Area {
 
     public int x, y, width, height;
 

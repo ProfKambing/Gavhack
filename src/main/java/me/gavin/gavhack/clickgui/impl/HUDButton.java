@@ -2,6 +2,8 @@ package me.gavin.gavhack.clickgui.impl;
 
 import me.gavin.gavhack.Gavhack;
 import me.gavin.gavhack.clickgui.api.AbstractPanelComponent;
+import me.gavin.gavhack.util.Utils;
+import net.minecraft.client.gui.Gui;
 
 import java.awt.*;
 
@@ -18,6 +20,7 @@ public class HUDButton extends AbstractPanelComponent {
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
         if (isMouseInside(mouseX, mouseY)) {
             parent.visible = !parent.visible;
+            Utils.click();
         }
     }
 
@@ -40,12 +43,8 @@ public class HUDButton extends AbstractPanelComponent {
     }
 
     @Override
-    public void mouseReleased(int mouseX, int mouseY, int mouseButton) {
-
-    }
+    public void mouseReleased(int mouseX, int mouseY, int mouseButton) { }
 
     @Override
-    public void keyTyped(char typedChar, int keycode) {
-
-    }
+    public void keyTyped(char typedChar, int keycode) { }
 }

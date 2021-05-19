@@ -26,6 +26,7 @@ public abstract class AbstractPanel<T extends AbstractPanelComponent> extends Ab
                 Utils.click();
             }
         }
+
         handlePanelClick(mouseX, mouseY, mouseButton);
     }
 

@@ -12,14 +12,10 @@ public class HUDPanel extends AbstractPanel<HUDButton> {
 
     @Override
     protected void handleMouseRelease(int mouseX, int mouseY, int mouseButton) {
-
     }
 
     @Override
     public void handlePanelClick(int mouseX, int mouseY, int mouseButton) {
-        if (!open)
-            return;
-
         for (HUDButton button : buttons) {
             button.mouseClicked(mouseX, mouseY, mouseButton);
         }
@@ -31,10 +27,20 @@ public class HUDPanel extends AbstractPanel<HUDButton> {
         int rgb = Gavhack.INSTANCE.colorManager.asColor().getRGB();
         Gavhack.INSTANCE.fontRenderer.drawStringWithShadow("HUD" + ChatFormatting.WHITE + " (" + buttons.size() + ")", x + 1f, y - 0.5f, rgb);
 
-        if (open)
+        if (open) {
             Gui.drawRect(x, y + header.height, x + width, y + height, 0x90131313);
+            for (HUDButton button : buttons) {
+                button.render(mouseX, mouseY, partialTicks);
+            }
+        }
 
         updateDragLogic(mouseX, mouseY);
         updatePositionsAndBounds();
+    }
+
+    public void onUpdate() {
+        for (HUDButton button : buttons) {
+            button.parent.onUpdate();
+        }
     }
 }

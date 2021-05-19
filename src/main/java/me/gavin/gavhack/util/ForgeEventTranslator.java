@@ -1,7 +1,9 @@
 package me.gavin.gavhack.util;
 
 import me.gavin.gavhack.Gavhack;
+import me.gavin.gavhack.clickgui.impl.HUDComponent;
 import me.gavin.gavhack.module.Module;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
@@ -21,6 +23,9 @@ public class ForgeEventTranslator {
     @SubscribeEvent
     public void onTick(TickEvent.PlayerTickEvent event) {
         Gavhack.INSTANCE.eventSys.post(event);
+        if (Minecraft.getMinecraft().currentScreen != Gavhack.INSTANCE.hudEditor) {
+            Gavhack.INSTANCE.hudEditor.panel.onUpdate();
+        }
     }
 
     @SubscribeEvent
@@ -31,6 +36,11 @@ public class ForgeEventTranslator {
     @SubscribeEvent
     public void onRenderScreen(RenderGameOverlayEvent.Text event) {
         Gavhack.INSTANCE.eventSys.post(event);
+        for (HUDComponent component : Gavhack.INSTANCE.hudEditor.components) {
+            if (component.visible) {
+                component.drawInHud();
+            }
+        }
     }
 
     @SubscribeEvent

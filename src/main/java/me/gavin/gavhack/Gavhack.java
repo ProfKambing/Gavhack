@@ -7,6 +7,8 @@ import me.gavin.gavhack.manager.DiscordManager;
 import me.gavin.gavhack.manager.ModuleManager;
 import me.gavin.gavhack.manager.ProjectionManager;
 import me.gavin.gavhack.util.ForgeEventTranslator;
+import me.gavin.gavhack.util.font.CFontLoader;
+import me.gavin.gavhack.util.font.CFontRenderer;
 import me.gavin.gavhack.util.font.SalFontRenderer;
 import me.gavin.quasar.EventSystem;
 import org.apache.logging.log4j.LogManager;
@@ -31,7 +33,7 @@ public class Gavhack {
 
     public Logger logger;
     public EventSystem eventSys;
-    public SalFontRenderer fontRenderer;
+    public CFontRenderer fontRenderer;
     public ModuleManager moduleManager;
     public ColorManager colorManager;
     public DiscordManager discordManager;
@@ -48,7 +50,7 @@ public class Gavhack {
         eventSys = new EventSystem();
         logger.info("Event system initialized");
 
-        fontRenderer = new SalFontRenderer("muli-semibold", 18);
+        fontRenderer = new CFontRenderer(CFontLoader.MULI_SEMIBOLD, true, true);
         logger.info("Font renderer initialized");
 
         discordManager = new DiscordManager();

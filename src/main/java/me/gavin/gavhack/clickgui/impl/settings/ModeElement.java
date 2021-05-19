@@ -38,6 +38,6 @@ public class ModeElement extends AbstractOffsettable {
         if (isMouseInside(mouseX, mouseY))
             color = Color.YELLOW.getRGB();
 
-        Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(ChatFormatting.WHITE + parent.name + ": " + ChatFormatting.RESET + parent.getMode(), x + 1f, y + 1f, color);
+        Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(ChatFormatting.WHITE + parent.name + ": " + ChatFormatting.RESET + parent.getMode(), x + 1f, y + 1f, new Color(color));
     }
 }

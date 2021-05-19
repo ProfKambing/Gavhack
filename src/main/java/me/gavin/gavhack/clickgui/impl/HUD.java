@@ -1,6 +1,6 @@
 package me.gavin.gavhack.clickgui.impl;
 
-import me.gavin.gavhack.clickgui.impl.hud.Watermark;
+import me.gavin.gavhack.clickgui.impl.hud.*;
 import net.minecraft.client.gui.GuiScreen;
 
 import java.util.ArrayList;
@@ -16,6 +16,8 @@ public class HUD extends GuiScreen {
 
         // add components here
         this.components.add(new Watermark());
+        this.components.add(new ServerIP());
+        this.components.add(new Ping());
 
         int yOffset = panel.header.height;
         for (HUDComponent component : components) {
@@ -40,7 +42,7 @@ public class HUD extends GuiScreen {
         panel.mouseClicked(mouseX, mouseY, mouseButton);
 
         for (HUDComponent component : components) {
-            if (component.isMouseInside(mouseX, mouseY) && mouseButton == 0) {
+            if (component.isMouseInside(mouseX, mouseY) && mouseButton == 0 && component.visible) {
                 component.startDragging(mouseX, mouseY);
                 return;
             }
@@ -61,5 +63,10 @@ public class HUD extends GuiScreen {
     @Override
     public void updateScreen() {
         panel.onUpdate();
+    }
+
+    @Override
+    public boolean doesGuiPauseGame() {
+        return false;
     }
 }

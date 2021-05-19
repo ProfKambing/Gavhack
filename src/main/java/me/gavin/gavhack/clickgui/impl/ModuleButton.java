@@ -79,7 +79,7 @@ public class ModuleButton extends AbstractPanelComponent {
         if (parent.enabled)
             color = Gavhack.INSTANCE.colorManager.asColor().getRGB();
 
-        Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(parent.name, x + 1f, y, color);
+        Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(parent.name, x + 1f, y + 0.5f, new Color(color));
 
         if (open) {
             Gui.drawRect(x + width - 1, y, x + width, y + height, Gavhack.INSTANCE.colorManager.asColor().getRGB());

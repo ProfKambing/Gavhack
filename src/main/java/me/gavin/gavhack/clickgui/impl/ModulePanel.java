@@ -51,8 +51,7 @@ public class ModulePanel extends AbstractPanel<ModuleButton> implements ITypeabl
     @Override
     public void render(int mouseX, int mouseY, float partialTicks) {
         Gui.drawRect(header.x, header.y, header.x + header.width, header.y + header.height, 0xCF060606);
-        int rgb = Gavhack.INSTANCE.colorManager.asColor().getRGB();
-        Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(category.name() + ChatFormatting.WHITE + " (" + count + ")", x + 1f, y - 0.5f, rgb);
+        Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(category.name() + ChatFormatting.WHITE + " (" + count + ")", x + 1f, y + 1f, Gavhack.INSTANCE.colorManager.asColor());
 
         if (open)
             Gui.drawRect(x, y + header.height, x + width, y + height, 0x90131313);

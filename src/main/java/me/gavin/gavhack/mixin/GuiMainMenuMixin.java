@@ -12,6 +12,6 @@ public class GuiMainMenuMixin {
 
     @Inject(method = "drawScreen", at = @At("TAIL"))
     public void drawScreenInject(int mouseX, int mouseY, float partialTicks, CallbackInfo ci) {
-        Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(Gavhack.MOD_NAME + " " + Gavhack.VERSION, 2f, 2f, Gavhack.INSTANCE.colorManager.asColor().getRGB());
+        Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(Gavhack.MOD_NAME + " " + Gavhack.VERSION, 2f, 2f, Gavhack.INSTANCE.colorManager.asColor());
     }
 }

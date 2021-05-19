@@ -34,7 +34,7 @@ public class HUDButton extends AbstractPanelComponent {
         if (parent.visible)
             color = Gavhack.INSTANCE.colorManager.asColor().getRGB();
 
-        Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(parent.name, x + 1f, y + 1f, color);
+        Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(parent.name, x + 1f, y + 1.5f, new Color(color));
     }
 
     @Override

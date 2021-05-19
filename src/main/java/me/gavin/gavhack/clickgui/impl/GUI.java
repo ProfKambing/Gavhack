@@ -7,6 +7,7 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiScreen;
 import org.lwjgl.input.Keyboard;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class GUI extends GuiScreen {
@@ -42,8 +43,8 @@ public class GUI extends GuiScreen {
             for (ModuleButton button : panel.buttons) {
                 if (button.isMouseInside(mouseX, mouseY)) {
                     String s = button.parent.description;
-                    Gui.drawRect(mouseX + 5, mouseY - 10, mouseX + 8 + (int) Gavhack.INSTANCE.fontRenderer.getStringWidth(s), mouseY - 10 + (int)Gavhack.INSTANCE.fontRenderer.FONT_HEIGHT, 0x80000000);
-                    Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(s, mouseX + 6f, mouseY - 11f, -1);
+                    Gui.drawRect(mouseX + 5, mouseY - 10, mouseX + 8 + Gavhack.INSTANCE.fontRenderer.getStringWidth(s), mouseY - 10 + Gavhack.INSTANCE.fontRenderer.getHeight(), 0x80000000);
+                    Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(s, mouseX + 6f, mouseY - 11f, new Color(-1));
                     return;
                 }
             }

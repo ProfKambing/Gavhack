@@ -5,6 +5,8 @@ import me.gavin.gavhack.Gavhack;
 import me.gavin.gavhack.clickgui.api.AbstractPanel;
 import net.minecraft.client.gui.Gui;
 
+import java.awt.*;
+
 public class HUDPanel extends AbstractPanel<HUDButton> {
     public HUDPanel(int x, int y, int width, int height, int headerHeight) {
         super(x, y, width, height, headerHeight);
@@ -25,7 +27,7 @@ public class HUDPanel extends AbstractPanel<HUDButton> {
     public void render(int mouseX, int mouseY, float partialTicks) {
         Gui.drawRect(header.x, header.y, header.x + header.width, header.y + header.height, 0xCF060606);
         int rgb = Gavhack.INSTANCE.colorManager.asColor().getRGB();
-        Gavhack.INSTANCE.fontRenderer.drawStringWithShadow("HUD" + ChatFormatting.WHITE + " (" + buttons.size() + ")", x + 1f, y - 0.5f, rgb);
+        Gavhack.INSTANCE.fontRenderer.drawStringWithShadow("HUD" + ChatFormatting.WHITE + " (" + buttons.size() + ")", x + 1f, y + 1f, new Color(rgb));
 
         if (open) {
             Gui.drawRect(x, y + header.height, x + width, y + height, 0x90131313);

@@ -11,29 +11,35 @@ buildscript {
         }
     }
     dependencies {
-        classpath "net.minecraftforge.gradle:ForgeGradle:2.3.1"
-        classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
+        classpath "net.minecraftforge.gradle:ForgeGradle:3.+"
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
 
-apply plugin: "net.minecraftforge.gradle.forge"
+apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.spongepowered.mixin'
+
+configurations {
+    shade
+}
 
 group = 'me.gavin'
 version = '1.0'
 archivesBaseName = 'gavhack'
 
-configurations {
-    shade
-    compile.extendsFrom shade
-}
-
 minecraft {
-    version = project.forgeVersion
-    runDir = "run"
-    coreMod = mixinCoreMod
-    mappings = project.mcpVersion
-    makeObfSourceJar = false
+    mappings channel: 'stable', version: '39-1.12'
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+
+            property 'fml.coreMods.load', mixinCoreMod
+
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
+        }
+    }
 }
 
 repositories {
@@ -50,12 +56,18 @@ repositories {
 }
 
 dependencies {
+    minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2854'
+
     // class patching
     shade('org.spongepowered:mixin:0.7.4-SNAPSHOT') {
         exclude module: 'launchwrapper'
         exclude module: 'guava'
         exclude module: 'gson'
         exclude module: 'commons-io'
+    }
+
+    annotationProcessor('org.spongepowered:mixin:0.8.2:processor') {
+        exclude module: 'gson'
     }
 
     // event system
@@ -66,29 +78,32 @@ dependencies {
     shade 'club.minnced:java-discord-rpc:2.0.1'
 
     // slick (for font renderer)
-    shade 'org.slick2d:slick2d-core:1.0.2'
+    shade ('org.slick2d:slick2d-core:1.0.2') {
+        exclude module: 'lwjgl'
+    }
+
+
+    compile configurations.shade
 }
 
 processResources {
     inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
 
     from(sourceSets.main.resources.srcDirs) {
-        include "mcmod.info"
+        include 'mcmod.info'
+        include mixinRefmap
 
-        expand "version": project.version, "mcversion": project.minecraft.version
+        expand 'version':project.version
     }
 
     from(sourceSets.main.resources.srcDirs) {
-        exclude "mcmod.info"
+        exclude 'mcmod.info'
     }
-
-    rename '(.+_at.cfg)', 'META-INF/$1'
 }
 
 mixin {
-    defaultObfuscationEnv searge
-    add sourceSets.main, 'gavhack.refmap.json'
+    defaultObfuscationEnv 'searge'
+    add sourceSets.main, mixinRefmap
 }
 
 jar {
@@ -100,7 +115,6 @@ jar {
                 'FMLCorePluginContainsFMLMod': 'true',
                 'FMLCorePlugin': mixinCoreMod,
                 'ForceLoadAsMod': 'true',
-                'FMLAT': 'gavhack_at.cfg'
         )
     }
     configurations.shade.each { dep ->

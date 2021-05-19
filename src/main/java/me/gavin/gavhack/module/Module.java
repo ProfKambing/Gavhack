@@ -11,7 +11,7 @@ public abstract class Module {
 
     protected final Minecraft mc = Minecraft.getMinecraft();
     protected final Gavhack gavhack = Gavhack.INSTANCE;
-    protected final ArrayList<Setting> settings = new ArrayList<>();
+    public final ArrayList<Setting> settings = new ArrayList<>();
 
     public final String name;
     public final String description;

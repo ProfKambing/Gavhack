@@ -1,11 +1,14 @@
 package me.gavin.gavhack.clickgui.api;
 
+import me.gavin.gavhack.util.Utils;
+
 import java.util.ArrayList;
 
-public abstract class AbstractPanel extends AbstractDragComponent {
+public abstract class AbstractPanel<T extends AbstractPanelComponent> extends AbstractDragComponent {
 
     public Area header;
-    public ArrayList<AbstractPanelComponent> buttons;
+    public ArrayList<T> buttons;
+    public boolean open;
 
     public AbstractPanel(int x, int y, int width, int height, int headerHeight) {
         super(x, y, width, height);
@@ -18,6 +21,9 @@ public abstract class AbstractPanel extends AbstractDragComponent {
         if (header.isMouseInside(mouseX, mouseY)) {
             if (mouseButton == 0) {
                 startDragging(mouseX, mouseY);
+            } else if (mouseButton == 1) {
+                open = !open;
+                Utils.click();
             }
         }
         handlePanelClick(mouseX, mouseY, mouseButton);
@@ -41,7 +47,7 @@ public abstract class AbstractPanel extends AbstractDragComponent {
 
 
         int height = header.height;
-        for (AbstractPanelComponent comp : buttons) {
+        for (T comp : buttons) {
             comp.x = this.x;
             comp.y = this.y + comp.yOffset;
             height += comp.height + comp.getSettingHeight();

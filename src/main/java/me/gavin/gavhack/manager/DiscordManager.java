@@ -21,7 +21,7 @@ public class DiscordManager {
 
     public void startRPC() {
         rpc.Discord_Initialize(appId, eventHandlers, true, null);
-        richPresence.largeImageKey = "gav_pig";
+        richPresence.largeImageKey = "rina";
         richPresence.startTimestamp = System.currentTimeMillis() / 1000L;
         richPresence.details = "Playing as " + Minecraft.getMinecraft().getSession().getUsername();
         rpc.Discord_UpdatePresence(richPresence);

@@ -7,7 +7,6 @@ import org.lwjgl.input.Keyboard;
 public class AntiFog extends Module {
     public AntiFog() {
         super("AntiFog", "Removes fog", Category.Render);
-        this.keybind.bind = Keyboard.KEY_H;
     }
 
     // See me.gavin.gavhack.mixin.EntityRendererMixin around line 18

@@ -4,7 +4,6 @@ import me.gavin.gavhack.Gavhack;
 import me.gavin.gavhack.clickgui.api.AbstractPanelComponent;
 import me.gavin.gavhack.module.Module;
 import me.gavin.gavhack.util.Utils;
-import net.minecraft.client.Minecraft;
 
 import java.awt.*;
 
@@ -40,7 +39,7 @@ public class ModuleButton extends AbstractPanelComponent {
         if (isMouseInside(mouseX, mouseY))
             color = Color.YELLOW.getRGB();
 
-        Minecraft.getMinecraft().fontRenderer.drawStringWithShadow(parent.name, x + 4f, y + 3f, color);
+        Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(parent.name, x + 1f, y, color);
     }
 
     @Override

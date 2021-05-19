@@ -7,7 +7,6 @@ import me.gavin.gavhack.clickgui.api.AbstractPanelComponent;
 import me.gavin.gavhack.clickgui.api.ITypeable;
 import me.gavin.gavhack.module.Category;
 import me.gavin.gavhack.module.Module;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 
 import java.util.ArrayList;
@@ -24,10 +23,10 @@ public class ModulePanel extends AbstractPanel implements ITypeable {
         ArrayList<Module> mods = Gavhack.INSTANCE.moduleManager.getModulesFromCategory(category);
         count = mods.size();
         for (Module module : mods) {
-            ModuleButton button = new ModuleButton(x, y, width, 16, module);
+            ModuleButton button = new ModuleButton(x, y, width, 12, module);
             button.yOffset = yOffset;
             this.buttons.add(button);
-            yOffset += 16;
+            yOffset += 12;
         }
     }
 
@@ -43,7 +42,7 @@ public class ModulePanel extends AbstractPanel implements ITypeable {
         Gui.drawRect(x, y, x + width, y + height, 0x80000000);
         Gui.drawRect(header.x, header.y, header.x + header.width, header.y + header.height, 0x80000000);
         int rgb = Gavhack.INSTANCE.colorManager.asColor().getRGB();
-        Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(category.name() + ChatFormatting.WHITE + " (" + count + ")", x + 4f, y + 3f, rgb);
+        Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(category.name() + ChatFormatting.WHITE + " (" + count + ")", x + 1f, y - 0.5f, rgb);
 
         int yOffset = header.height;
         for (AbstractPanelComponent button : buttons) {

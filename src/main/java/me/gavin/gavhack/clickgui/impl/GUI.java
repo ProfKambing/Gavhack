@@ -17,7 +17,7 @@ public class GUI extends GuiScreen {
 
         int xOff = 10;
         for (Category c : Category.values()) {
-            panels.add(new ModulePanel(c, xOff, 10, 100, 300, 14));
+            panels.add(new ModulePanel(c, xOff, 10, 75, 300, 12));
             xOff += 110;
         }
     }

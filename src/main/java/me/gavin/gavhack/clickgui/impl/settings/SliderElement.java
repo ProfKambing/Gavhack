@@ -26,11 +26,15 @@ public class SliderElement extends AbstractOffsettable implements IReleaseable {
     public void render(int mouseX, int mouseY, float partialTicks) {
         updateSlider(mouseX, mouseY);
 
+
         int color = Gavhack.INSTANCE.colorManager.asColor().getRGB();
+        Gui.drawRect(x + width - 1, y, x +width, y + height, color);
 
         Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(ChatFormatting.WHITE + parent.name + ": " + ChatFormatting.RESET + parent.value, x + 1f, y, color);
 
-        Gui.drawRect(x, y + height - 2, x + width, y + height, color);
+        Gui.drawRect(x, y + height - 1, x + (int)sliderWidth, y + height, color);
+        if (draggingSlider)
+            Gui.drawRect(x, y + height - 1, x + (int)sliderWidth, y + height, 0x50000000);
     }
 
     @Override

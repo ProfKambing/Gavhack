@@ -35,9 +35,9 @@ public abstract class Module {
     }
 
     public void enable() {
-        onEnable();
         enabled = true;
         gavhack.eventSys.subscribe(this);
+        onEnable();
     }
 
     public void disable() {

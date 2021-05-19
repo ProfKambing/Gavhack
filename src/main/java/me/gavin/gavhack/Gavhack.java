@@ -1,9 +1,11 @@
 package me.gavin.gavhack;
 
 import me.gavin.gavhack.clickgui.impl.GUI;
+import me.gavin.gavhack.clickgui.impl.HUD;
 import me.gavin.gavhack.manager.ColorManager;
 import me.gavin.gavhack.manager.DiscordManager;
 import me.gavin.gavhack.manager.ModuleManager;
+import me.gavin.gavhack.manager.ProjectionManager;
 import me.gavin.gavhack.util.ForgeEventTranslator;
 import me.gavin.gavhack.util.font.SalFontRenderer;
 import me.gavin.quasar.EventSystem;
@@ -33,7 +35,9 @@ public class Gavhack {
     public ModuleManager moduleManager;
     public ColorManager colorManager;
     public DiscordManager discordManager;
+    public ProjectionManager projectionManager;
     public GUI clickGui;
+    public HUD hudEditor;
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
@@ -56,8 +60,14 @@ public class Gavhack {
         colorManager = new ColorManager();
         logger.info("Color manager initialized");
 
+        projectionManager = new ProjectionManager();
+        logger.info("Projection manager initialized");
+
         clickGui = new GUI();
         logger.info("Click GUI initialized");
+
+        hudEditor = new HUD();
+        logger.info("HUD editor initialized");
 
         new ForgeEventTranslator();
         logger.info("Forge event translator initialized");

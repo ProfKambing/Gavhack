@@ -14,7 +14,7 @@ public class NumberSetting extends Setting {
     }
 
     public void setClamped(float value) {
-        double precision = 1.0D / this.increment;
-        this.value = (float) (Math.round(Math.max(this.min, Math.min(this.max, value)) * precision) / precision);
+        float precision = 1.0f / this.increment;
+        this.value = Math.round(Math.max(this.min, Math.min(this.max, value)) * precision) / precision;
     }
 }

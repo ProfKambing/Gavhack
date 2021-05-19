@@ -19,8 +19,6 @@ public class ModeElement extends AbstractOffsettable {
 
     @Override
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
-        int rgb = Gavhack.INSTANCE.colorManager.asColor().getRGB();
-        Gui.drawRect(x + width - 1, y, x + width, y + height, rgb);
 
         if (isMouseInside(mouseX, mouseY)) {
             if (mouseButton == 0) {
@@ -35,6 +33,7 @@ public class ModeElement extends AbstractOffsettable {
     @Override
     public void render(int mouseX, int mouseY, float partialTicks) {
         int color = Gavhack.INSTANCE.colorManager.asColor().getRGB();
+        Gui.drawRect(x + width - 1, y, x + width, y + height, color);
 
         if (isMouseInside(mouseX, mouseY))
             color = Color.YELLOW.getRGB();

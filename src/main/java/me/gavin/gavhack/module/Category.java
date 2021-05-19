@@ -5,5 +5,6 @@ public enum Category {
     Movement,
     Render,
     Player,
+    Chat,
     Client
 }

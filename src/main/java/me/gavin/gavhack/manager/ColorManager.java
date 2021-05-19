@@ -18,7 +18,6 @@ public class ColorManager {
     }
 
     public void updateColor() {
-        colorModule.saturation.setClamped(1f);
         if (colorModule.rainbow.value) {
             Color rainbow = getRainbow(colorModule.speed.value, colorModule.saturation.value);
             this.r = rainbow.getRed();

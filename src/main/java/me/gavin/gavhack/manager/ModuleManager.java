@@ -2,10 +2,7 @@ package me.gavin.gavhack.manager;
 
 import me.gavin.gavhack.module.Category;
 import me.gavin.gavhack.module.Module;
-import me.gavin.gavhack.module.impl.AntiFog;
-import me.gavin.gavhack.module.impl.ClickGUI;
-import me.gavin.gavhack.module.impl.ColorModule;
-import me.gavin.gavhack.module.impl.Fullbright;
+import me.gavin.gavhack.module.impl.*;
 
 import java.util.ArrayList;
 
@@ -22,6 +19,7 @@ public class ModuleManager {
         // Combat
 
         // Movement
+        this.modules.add(new Sprint());
 
         // Render
         this.modules.add(new AntiFog());
@@ -31,6 +29,7 @@ public class ModuleManager {
 
         // Client
         this.modules.add(new ClickGUI());
+        this.modules.add(new HUDEditor());
         this.modules.add(new ColorModule());
     }
 

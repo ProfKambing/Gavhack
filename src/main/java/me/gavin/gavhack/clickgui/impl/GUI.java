@@ -3,6 +3,7 @@ package me.gavin.gavhack.clickgui.impl;
 import me.gavin.gavhack.Gavhack;
 import me.gavin.gavhack.module.Category;
 import me.gavin.gavhack.module.impl.ClickGUI;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiScreen;
 import org.lwjgl.input.Keyboard;
 
@@ -18,14 +19,34 @@ public class GUI extends GuiScreen {
         int xOff = 10;
         for (Category c : Category.values()) {
             panels.add(new ModulePanel(c, xOff, 10, 75, 300, 12));
-            xOff += 110;
+            xOff += 85;
         }
     }
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        final ClickGUI clickgui = (ClickGUI)Gavhack.INSTANCE.moduleManager.getModule(ClickGUI.class);
+        if (clickgui.background.value)
+            drawDefaultBackground();
+
         for (ModulePanel panel : panels) {
             panel.render(mouseX, mouseY, partialTicks);
+        }
+
+        if (!(clickgui.descriptions.value))
+            return;
+
+        for (ModulePanel panel : panels) {
+            if (!panel.open)
+                continue;
+            for (ModuleButton button : panel.buttons) {
+                if (button.isMouseInside(mouseX, mouseY)) {
+                    String s = button.parent.description;
+                    Gui.drawRect(mouseX + 5, mouseY - 10, mouseX + 8 + (int) Gavhack.INSTANCE.fontRenderer.getStringWidth(s), mouseY - 10 + (int)Gavhack.INSTANCE.fontRenderer.getStringHeight(s), 0x80000000);
+                    Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(s, mouseX + 6f, mouseY - 11f, -1);
+                    return;
+                }
+            }
         }
     }
 

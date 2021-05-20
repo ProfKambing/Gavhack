@@ -1,12 +1,14 @@
 package me.gavin.gavhack.setting;
 
+import me.gavin.gavhack.module.Module;
+
 public class NumberSetting extends Setting {
 
     public float value;
     public final float min, max, increment;
 
-    public NumberSetting(String name, float value, float min, float max, float increment) {
-        super(name);
+    public NumberSetting(Module module, String name, float value, float min, float max, float increment) {
+        super(module, name);
         this.value = value;
         this.min = min;
         this.max = max;

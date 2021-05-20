@@ -18,13 +18,16 @@ public class HUD extends GuiScreen {
         this.components.add(new Watermark());
         this.components.add(new ServerIP());
         this.components.add(new Ping());
+        this.components.add(new Inventory());
+        this.components.add(new TPS());
+        this.components.add(new ModList());
 
         int yOffset = panel.header.height;
         for (HUDComponent component : components) {
-            HUDButton button = new HUDButton(component, panel.x, panel.y, panel.width, 14);
+            HUDButton button = new HUDButton(component, panel.x, panel.y, panel.width, 12);
             button.yOffset = yOffset;
             panel.buttons.add(button);
-            yOffset += 14;
+            yOffset += 12;
         }
     }
 

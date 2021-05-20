@@ -22,7 +22,8 @@ public class Ping extends HUDComponent {
         int sping = -1;
 
         if (mc.getConnection() != null || mc.player != null) {
-            sping = mc.getConnection().getPlayerInfo(mc.player.getUniqueID()).getResponseTime();
+            if (mc.getConnection().getPlayerInfo(mc.player.getUniqueID()) != null)
+                sping = mc.getConnection().getPlayerInfo(mc.player.getUniqueID()).getResponseTime();
         }
 
         ping = "Ping " + ChatFormatting.WHITE + sping;

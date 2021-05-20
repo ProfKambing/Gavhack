@@ -45,7 +45,7 @@ public class KeybindElement extends AbstractOffsettable implements ITypeable {
         }
 
         if (listening) {
-            Gavhack.INSTANCE.fontRenderer.drawStringWithShadow("Listening...", x + 1f, y + 1f, new Color(color));
+            Gavhack.INSTANCE.fontRenderer.drawStringWithShadow("Listening...", x + 1f, y + 2f, new Color(color));
         } else {
             Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(
                     cf + parent.name + " " + ChatFormatting.RESET + Keyboard.getKeyName(parent.bind),

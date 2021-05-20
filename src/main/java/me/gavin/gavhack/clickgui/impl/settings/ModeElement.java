@@ -3,6 +3,7 @@ package me.gavin.gavhack.clickgui.impl.settings;
 import com.mojang.realmsclient.gui.ChatFormatting;
 import me.gavin.gavhack.Gavhack;
 import me.gavin.gavhack.clickgui.api.AbstractOffsettable;
+import me.gavin.gavhack.event.ModeChangeEvent;
 import me.gavin.gavhack.setting.ModeSetting;
 import me.gavin.gavhack.util.Utils;
 import net.minecraft.client.gui.Gui;
@@ -26,6 +27,7 @@ public class ModeElement extends AbstractOffsettable {
             } else if (mouseButton == 1) {
                 parent.cycle(true);
             }
+            Gavhack.INSTANCE.eventSys.post(new ModeChangeEvent(parent.module, parent.getMode()));
             Utils.click();
         }
     }
@@ -38,6 +40,6 @@ public class ModeElement extends AbstractOffsettable {
         if (isMouseInside(mouseX, mouseY))
             color = Color.YELLOW.getRGB();
 
-        Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(ChatFormatting.WHITE + parent.name + ": " + ChatFormatting.RESET + parent.getMode(), x + 1f, y + 1f, new Color(color));
+        Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(ChatFormatting.WHITE + parent.name + ": " + ChatFormatting.RESET + parent.getMode(), x + 1f, y + 2f, new Color(color));
     }
 }

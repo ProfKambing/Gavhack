@@ -35,6 +35,11 @@ public class ColorManager {
         return new Color(Color.HSBtoRGB(hue, saturation, 1f));
     }
 
+    public Color getRGBWave(float seconds, float saturation, long index) {
+        float hue = (float)((System.currentTimeMillis() + index) % (long)((int)(seconds * 1000.0F))) / (seconds * 1000.0F);
+        return new Color(Color.HSBtoRGB(hue, saturation, 1f));
+    }
+
     public float getR() {
         return this.r;
     }

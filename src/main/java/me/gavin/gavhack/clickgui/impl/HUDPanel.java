@@ -42,7 +42,8 @@ public class HUDPanel extends AbstractPanel<HUDButton> {
 
     public void onUpdate() {
         for (HUDButton button : buttons) {
-            button.parent.onUpdate();
+            if (button.parent.visible)
+                button.parent.onUpdate();
         }
     }
 }

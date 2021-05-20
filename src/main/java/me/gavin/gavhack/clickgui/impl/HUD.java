@@ -18,6 +18,7 @@ public class HUD extends GuiScreen {
         this.components.add(new Watermark());
         this.components.add(new ServerIP());
         this.components.add(new Ping());
+        components.add(new Coords());
 
         int yOffset = panel.header.height;
         for (HUDComponent component : components) {

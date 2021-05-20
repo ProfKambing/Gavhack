@@ -10,7 +10,7 @@ public class AutoSuicide extends Module {
         settings.add(announceUsage);
     }
 
-    public final BooleanSetting announceUsage = new BooleanSetting("Announce Usage", true);
+    public final BooleanSetting announceUsage = new BooleanSetting(this, "Announce Usage", true);
 
     public void onEnable() {
         if(announceUsage.value) {

@@ -1,12 +1,14 @@
 package me.gavin.gavhack.setting;
 
+import me.gavin.gavhack.module.Module;
+
 public class ModeSetting extends Setting {
 
     private int modeIndex = 0;
     private final String[] modes;
 
-    public ModeSetting(String name, String defaultMode, String... modes) {
-        super(name);
+    public ModeSetting(Module module, String name, String defaultMode, String... modes) {
+        super(module, name);
         this.modes = modes;
         this.modeIndex = getIndex(defaultMode);
     }

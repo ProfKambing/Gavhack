@@ -1,6 +1,7 @@
 package me.gavin.gavhack.module;
 
 import me.gavin.gavhack.Gavhack;
+import me.gavin.gavhack.event.MetaDataSetEvent;
 import me.gavin.gavhack.setting.KeybindSetting;
 import me.gavin.gavhack.setting.Setting;
 import net.minecraft.client.Minecraft;
@@ -19,6 +20,8 @@ public abstract class Module {
 
     public boolean enabled;
 
+    private String currentMetadata;
+
     public final KeybindSetting keybind;
 
     public Module(String name, String description, Category category) {
@@ -26,7 +29,7 @@ public abstract class Module {
         this.description = description;
         this.category = category;
 
-        this.keybind = new KeybindSetting("Bind", 0);
+        this.keybind = new KeybindSetting(this, "Bind", 0);
         this.settings.add(keybind);
     }
 
@@ -49,4 +52,17 @@ public abstract class Module {
     protected void onEnable() { }
 
     protected void onDisable() { }
+
+    protected void setMetadata(String text) {
+        this.currentMetadata = text;
+        gavhack.eventSys.post(new MetaDataSetEvent(this, text));
+    }
+
+    public String getMetaData() {
+        if (currentMetadata == null) {
+            return "";
+        } else {
+            return currentMetadata;
+        }
+    }
 }

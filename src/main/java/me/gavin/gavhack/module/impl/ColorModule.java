@@ -7,13 +7,13 @@ import me.gavin.gavhack.setting.NumberSetting;
 
 public class ColorModule extends Module {
 
-    public final NumberSetting red = new NumberSetting("R", 190f, 0f, 255f, 1f);
-    public final NumberSetting green = new NumberSetting("G", 0f, 0f, 255f, 1f);
-    public final NumberSetting blue = new NumberSetting("B", 254f, 0f, 255f, 1f);
+    public final NumberSetting red = new NumberSetting(this, "R", 190f, 0f, 255f, 1f);
+    public final NumberSetting green = new NumberSetting(this, "G", 0f, 0f, 255f, 1f);
+    public final NumberSetting blue = new NumberSetting(this, "B", 254f, 0f, 255f, 1f);
 
-    public final BooleanSetting rainbow = new BooleanSetting("Rainbow", true);
-    public final NumberSetting saturation = new NumberSetting("Rainbow Saturation", 0.7f, 0.1f, 1f, 0.1f);
-    public final NumberSetting speed = new NumberSetting("Rainbow Duration", 6f, 1f, 15f, 0.5f);
+    public final BooleanSetting rainbow = new BooleanSetting(this, "Rainbow", true);
+    public final NumberSetting saturation = new NumberSetting(this, "Rainbow Saturation", 0.7f, 0.1f, 1f, 0.1f);
+    public final NumberSetting speed = new NumberSetting(this, "Rainbow Duration", 6f, 1f, 15f, 0.5f);
 
     public ColorModule() {
         super("Color", "Manage the color of the client", Category.Client);

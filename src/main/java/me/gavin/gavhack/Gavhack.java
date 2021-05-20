@@ -2,10 +2,7 @@ package me.gavin.gavhack;
 
 import me.gavin.gavhack.clickgui.impl.GUI;
 import me.gavin.gavhack.clickgui.impl.HUD;
-import me.gavin.gavhack.manager.ColorManager;
-import me.gavin.gavhack.manager.DiscordManager;
-import me.gavin.gavhack.manager.ModuleManager;
-import me.gavin.gavhack.manager.ProjectionManager;
+import me.gavin.gavhack.manager.*;
 import me.gavin.gavhack.util.ForgeEventTranslator;
 import me.gavin.gavhack.util.font.CFontLoader;
 import me.gavin.gavhack.util.font.CFontRenderer;
@@ -40,6 +37,7 @@ public class Gavhack {
     public ProjectionManager projectionManager;
     public GUI clickGui;
     public HUD hudEditor;
+    public TpsManager tpsManager;
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
@@ -73,6 +71,9 @@ public class Gavhack {
 
         new ForgeEventTranslator();
         logger.info("Forge event translator initialized");
+
+        tpsManager = new TpsManager();
+        logger.info("TPS manager initialized");
 
         logger.info(Gavhack.MOD_NAME + " finished initialization");
 

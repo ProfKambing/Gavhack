@@ -4,14 +4,12 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import me.gavin.gavhack.Gavhack;
 import me.gavin.gavhack.clickgui.impl.HUDComponent;
 
-public class Watermark extends HUDComponent {
-
-    private final String text;
-
-    public Watermark() {
-        super("Watermark", "Draws a watermark", 50, Gavhack.INSTANCE.fontRenderer.getHeight());
-        text = Gavhack.MOD_NAME + " " + ChatFormatting.WHITE + Gavhack.VERSION;
+public class TPS extends HUDComponent {
+    public TPS() {
+        super("TPS", "Shows server TPS", Gavhack.INSTANCE.fontRenderer.getStringWidth("TPS "), Gavhack.INSTANCE.fontRenderer.getHeight());
     }
+
+    private String text = "TPS ";
 
     @Override
     public void drawInHud() {
@@ -20,7 +18,7 @@ public class Watermark extends HUDComponent {
 
     @Override
     public void onUpdate() {
+        text = "TPS " + ChatFormatting.WHITE + String.format("%.2f", Gavhack.INSTANCE.tpsManager.getTickRate());
         this.width = Gavhack.INSTANCE.fontRenderer.getStringWidth(text);
-        this.height = Gavhack.INSTANCE.fontRenderer.getHeight() + 1;
     }
 }

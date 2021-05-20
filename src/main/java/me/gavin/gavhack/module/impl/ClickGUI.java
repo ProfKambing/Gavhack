@@ -7,8 +7,8 @@ import org.lwjgl.input.Keyboard;
 
 public class ClickGUI extends Module {
 
-    public final BooleanSetting descriptions = new BooleanSetting("Descriptions", true);
-    public final BooleanSetting background = new BooleanSetting("Background", false);
+    public final BooleanSetting descriptions = new BooleanSetting(this, "Descriptions", true);
+    public final BooleanSetting background = new BooleanSetting(this, "Background", false);
 
     public ClickGUI() {
         super("ClickGUI", "Manage modules with a GUI", Category.Client);

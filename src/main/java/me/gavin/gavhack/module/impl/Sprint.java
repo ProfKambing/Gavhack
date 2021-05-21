@@ -16,7 +16,7 @@ public class Sprint extends Module {
     public Sprint() {
         super("Sprint", "Sprint automatically", Category.Movement);
         this.settings.add(sprintMode);
-        this.setMetadata(ChatFormatting.WHITE + " [" + sprintMode.getMode() + "]");
+        this.setMetadata(ChatFormatting.WHITE + "[" + sprintMode.getMode() + "]");
     }
 
     @Register
@@ -38,6 +38,6 @@ public class Sprint extends Module {
 
     @Register
     public final Listener<ModeChangeEvent> modeChangeListener = event -> {
-        this.setMetadata(ChatFormatting.WHITE + " [" + event.newMode + "]");
+        this.setMetadata(ChatFormatting.WHITE + "[" + event.newMode + "]" + ChatFormatting.RESET);
     };
 }

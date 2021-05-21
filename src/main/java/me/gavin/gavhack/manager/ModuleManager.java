@@ -29,15 +29,18 @@ public class ModuleManager {
 
     public void registerModules() {
         // Combat
+        this.modules.add(new FootXP());
 
         // Movement
         this.modules.add(new Sprint());
+        this.modules.add(new GuiMove());
 
         // Render
         this.modules.add(new AntiFog());
         this.modules.add(new Fullbright());
 
         // Player
+        this.modules.add(new FastUse());
 
         // Client
         this.modules.add(new ClickGUI());

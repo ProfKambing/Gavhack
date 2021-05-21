@@ -8,6 +8,10 @@
     "EntityRendererMixin",
     "GuiMainMenuMixin",
     "MinecraftMixin",
-    "NetworkManagerMixin"
+    "MovementInputFromOptionsMixin",
+    "NetworkManagerMixin",
+    "EntityPlayerSPMixin",
+    "accessor.IMinecraft",
+    "accessor.ICPacketPlayer"
   ]
 }

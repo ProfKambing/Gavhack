@@ -32,6 +32,7 @@ public class ModuleManager {
 
         // Movement
         this.modules.add(new Sprint());
+        this.modules.add(new Flight());
 
         // Render
         this.modules.add(new AntiFog());

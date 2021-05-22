@@ -48,7 +48,6 @@ public class HUD extends GuiScreen {
             return;
 
         HUDEditor hudEditor = (HUDEditor) Gavhack.INSTANCE.moduleManager.getModule(HUDEditor.class);
-        
         for (HUDButton button : panel.buttons) {
             if (button.isMouseInside(mouseX, mouseY)) {
                 String s = button.parent.description;

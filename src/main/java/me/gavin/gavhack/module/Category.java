@@ -6,5 +6,6 @@ public enum Category {
     Render,
     Player,
     Chat,
-    Client
+    Client,
+    Misc
 }

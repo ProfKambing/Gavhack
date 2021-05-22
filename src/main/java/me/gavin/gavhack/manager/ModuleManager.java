@@ -45,10 +45,16 @@ public class ModuleManager {
         modules.add(new AutoSuicide());
         this.modules.add(new FastUse());
 
+        //CHAT
+        modules.add(new ChatSuffix());
+
         // Client
         this.modules.add(new ClickGUI());
         this.modules.add(new HUDEditor());
         this.modules.add(new ColorModule());
+
+        //MISC
+        modules.add(new MCF());
 
         this.sortedModules.addAll(modules);
         this.sortedModules.sort(this::sortByLength);

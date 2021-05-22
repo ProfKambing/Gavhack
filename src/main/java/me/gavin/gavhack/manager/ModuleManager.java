@@ -38,12 +38,15 @@ public class ModuleManager {
 
         // Render
         this.modules.add(new AntiFog());
-        modules.add(new PlayerESP());
+        this.modules.add(new PlayerESP());
         this.modules.add(new Fullbright());
+        this.modules.add(new Tracers());
+        this.modules.add(new Nametags());
 
         // Player
-        modules.add(new AutoSuicide());
+        this.modules.add(new AutoSuicide());
         this.modules.add(new FastUse());
+        this.modules.add(new FakePlayer());
 
         //CHAT
         modules.add(new ChatSuffix());

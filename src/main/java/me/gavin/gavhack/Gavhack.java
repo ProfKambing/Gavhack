@@ -32,6 +32,7 @@ public class Gavhack {
     public EventSystem eventSys;
     public CFontRenderer fontRenderer;
     public ModuleManager moduleManager;
+    public CommandManager commandManager;
     public ColorManager colorManager;
     public DiscordManager discordManager;
     public ProjectionManager projectionManager;
@@ -56,6 +57,9 @@ public class Gavhack {
 
         moduleManager = new ModuleManager();
         logger.info("Module manager initialized");
+
+        commandManager = new CommandManager();
+        logger.info("Command manager initialized");
 
         colorManager = new ColorManager();
         logger.info("Color manager initialized");

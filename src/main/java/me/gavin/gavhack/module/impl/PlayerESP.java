@@ -47,73 +47,77 @@ public class PlayerESP extends Module {
                 double y = (e.posY - e.lastTickPosY) * event.getPartialTicks();
                 double z = (e.posZ - e.lastTickPosZ) * event.getPartialTicks();
 
-                if(mode.getMode().equals("Box")) {
-                    GlStateManager.pushMatrix();
-                    GlStateManager.enableBlend();
-                    GlStateManager.disableDepth();
-                    GlStateManager.tryBlendFuncSeparate(770, 771, 0, 1);
-                    GlStateManager.disableTexture2D();
-                    GlStateManager.depthMask(false);
+                switch (mode.getMode()) {
+                    case "Box":
+                        GlStateManager.pushMatrix();
+                        GlStateManager.enableBlend();
+                        GlStateManager.disableDepth();
+                        GlStateManager.tryBlendFuncSeparate(770, 771, 0, 1);
+                        GlStateManager.disableTexture2D();
+                        GlStateManager.depthMask(false);
 
-                    GL11.glEnable(GL11.GL_LINE_SMOOTH);
-                    GL11.glHint(GL11.GL_LINE_SMOOTH_HINT, GL11.GL_NICEST);
-                    if(colorMode.getMode().equals("RGBA")) {
-                        RenderGlobal.renderFilledBox(x + box.minX, y + box.minY, z + box.minZ, x + box.maxX, y + box.maxY, z + box.maxZ, rBox.value / 255f, gBox.value / 255f, bBox.value / 255f, aBox.value / 255f);
-                    }else if(colorMode.getMode().equals("Rainbow")) {
+                        GL11.glEnable(GL11.GL_LINE_SMOOTH);
+                        GL11.glHint(GL11.GL_LINE_SMOOTH_HINT, GL11.GL_NICEST);
+                        if (colorMode.getMode().equals("RGBA")) {
+                            RenderGlobal.renderFilledBox(x + box.minX, y + box.minY, z + box.minZ, x + box.maxX, y + box.maxY, z + box.maxZ, rBox.value / 255f, gBox.value / 255f, bBox.value / 255f, aBox.value / 255f);
+                        } else {
+                            colorMode.getMode();
+                        }
+                        GL11.glDisable(GL11.GL_LINE_SMOOTH);
 
-                    }
-                    GL11.glDisable(GL11.GL_LINE_SMOOTH);
+                        GlStateManager.depthMask(true);
+                        GlStateManager.enableDepth();
+                        GlStateManager.enableTexture2D();
+                        GlStateManager.disableBlend();
+                        GlStateManager.popMatrix();
+                        break;
+                    case "Outline":
+                        GlStateManager.pushMatrix();
+                        GlStateManager.enableBlend();
+                        GlStateManager.disableDepth();
+                        GlStateManager.tryBlendFuncSeparate(770, 771, 0, 1);
+                        GlStateManager.disableTexture2D();
+                        GlStateManager.depthMask(false);
 
-                    GlStateManager.depthMask(true);
-                    GlStateManager.enableDepth();
-                    GlStateManager.enableTexture2D();
-                    GlStateManager.disableBlend();
-                    GlStateManager.popMatrix();
-                }else if(mode.getMode().equals("Outline")) {
-                    GlStateManager.pushMatrix();
-                    GlStateManager.enableBlend();
-                    GlStateManager.disableDepth();
-                    GlStateManager.tryBlendFuncSeparate(770, 771, 0, 1);
-                    GlStateManager.disableTexture2D();
-                    GlStateManager.depthMask(false);
+                        GL11.glEnable(GL11.GL_LINE_SMOOTH);
+                        GL11.glHint(GL11.GL_LINE_SMOOTH_HINT, GL11.GL_NICEST);
+                        if (colorMode.getMode().equals("RGBA")) {
+                            RenderGlobal.drawBoundingBox(x + box.minX, y + box.minY, z + box.minZ, x + box.maxX, y + box.maxY, z + box.maxZ, rOutline.value / 255f, gOutline.value / 255f, bOutline.value / 255f, aOutline.value / 255f);
+                        } else {
+                            colorMode.getMode();
+                        }
+                        GL11.glDisable(GL11.GL_LINE_SMOOTH);
 
-                    GL11.glEnable(GL11.GL_LINE_SMOOTH);
-                    GL11.glHint(GL11.GL_LINE_SMOOTH_HINT, GL11.GL_NICEST);
-                    if(colorMode.getMode().equals("RGBA")) {
-                        RenderGlobal.drawBoundingBox(x + box.minX, y + box.minY, z + box.minZ, x + box.maxX, y + box.maxY, z + box.maxZ, rOutline.value / 255f, gOutline.value / 255f, bOutline.value / 255f, aOutline.value / 255f);
-                    }else if(colorMode.getMode().equals("Rainbow")) {
+                        GlStateManager.depthMask(true);
+                        GlStateManager.enableDepth();
+                        GlStateManager.enableTexture2D();
+                        GlStateManager.disableBlend();
+                        GlStateManager.popMatrix();
+                        break;
+                    case "Both":
+                        GlStateManager.pushMatrix();
+                        GlStateManager.enableBlend();
+                        GlStateManager.disableDepth();
+                        GlStateManager.tryBlendFuncSeparate(770, 771, 0, 1);
+                        GlStateManager.disableTexture2D();
+                        GlStateManager.depthMask(false);
 
-                    }
-                    GL11.glDisable(GL11.GL_LINE_SMOOTH);
+                        GL11.glEnable(GL11.GL_LINE_SMOOTH);
+                        GL11.glHint(GL11.GL_LINE_SMOOTH_HINT, GL11.GL_NICEST);
+                        if (colorMode.getMode().equals("RGBA")) {
+                            RenderGlobal.drawBoundingBox(x + box.minX, y + box.minY, z + box.minZ, x + box.maxX, y + box.maxY, z + box.maxZ, rOutline.value / 255f, gOutline.value / 255f, bOutline.value / 255f, aOutline.value / 255f);
+                            RenderGlobal.renderFilledBox(x + box.minX, y + box.minY, z + box.minZ, x + box.maxX, y + box.maxY, z + box.maxZ, rBox.value / 255f, gBox.value / 255f, bBox.value / 255f, aBox.value / 255f);
+                        } else if (colorMode.getMode().equals("Rainbow")) {
 
-                    GlStateManager.depthMask(true);
-                    GlStateManager.enableDepth();
-                    GlStateManager.enableTexture2D();
-                    GlStateManager.disableBlend();
-                    GlStateManager.popMatrix();
-                }else if(mode.getMode().equals("Both")) {
-                    GlStateManager.pushMatrix();
-                    GlStateManager.enableBlend();
-                    GlStateManager.disableDepth();
-                    GlStateManager.tryBlendFuncSeparate(770, 771, 0, 1);
-                    GlStateManager.disableTexture2D();
-                    GlStateManager.depthMask(false);
+                        }
+                        GL11.glDisable(GL11.GL_LINE_SMOOTH);
 
-                    GL11.glEnable(GL11.GL_LINE_SMOOTH);
-                    GL11.glHint(GL11.GL_LINE_SMOOTH_HINT, GL11.GL_NICEST);
-                    if(colorMode.getMode().equals("RGBA")) {
-                        RenderGlobal.drawBoundingBox(x + box.minX, y + box.minY, z + box.minZ, x + box.maxX, y + box.maxY, z + box.maxZ, rOutline.value / 255f, gOutline.value / 255f, bOutline.value / 255f, aOutline.value / 255f);
-                        RenderGlobal.renderFilledBox(x + box.minX, y + box.minY, z + box.minZ, x + box.maxX, y + box.maxY, z + box.maxZ, rBox.value / 255f, gBox.value / 255f, bBox.value / 255f, aBox.value / 255f);
-                    }else if(colorMode.getMode().equals("Rainbow")) {
-
-                    }
-                    GL11.glDisable(GL11.GL_LINE_SMOOTH);
-
-                    GlStateManager.depthMask(true);
-                    GlStateManager.enableDepth();
-                    GlStateManager.enableTexture2D();
-                    GlStateManager.disableBlend();
-                    GlStateManager.popMatrix();
+                        GlStateManager.depthMask(true);
+                        GlStateManager.enableDepth();
+                        GlStateManager.enableTexture2D();
+                        GlStateManager.disableBlend();
+                        GlStateManager.popMatrix();
+                        break;
                 }
             }
         }

@@ -11,7 +11,7 @@ public class HUDEditor extends Module {
         settings.add(descriptions);
     }
 
-    private final BooleanSetting descriptions = new BooleanSetting(this, "Descriptions", true);
+    public final BooleanSetting descriptions = new BooleanSetting(this, "Descriptions", true);
 
     @Override
     public void onEnable() {

@@ -10,7 +10,8 @@
     "MinecraftMixin",
     "MovementInputFromOptionsMixin",
     "NetworkManagerMixin",
-    "accessor.IMinecraft",
-    "accessor.ICPacketPlayer"
+    "RenderPlayerMixin",
+    "accessor.ICPacketPlayer",
+    "accessor.IMinecraft"
   ]
 }

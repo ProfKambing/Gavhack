@@ -11,8 +11,6 @@ public class ColorModule extends Module {
     public final NumberSetting green = new NumberSetting(this, "G", 0f, 0f, 255f, 1f);
     public final NumberSetting blue = new NumberSetting(this, "B", 254f, 0f, 255f, 1f);
 
-    public final BooleanSetting trans = new BooleanSetting(this, "Trans Mode", false);
-
     public final BooleanSetting rainbow = new BooleanSetting(this, "Rainbow", true);
     public final NumberSetting saturation = new NumberSetting(this, "Rainbow Saturation", 0.7f, 0.1f, 1f, 0.1f);
     public final NumberSetting speed = new NumberSetting(this, "Rainbow Duration", 6f, 1f, 15f, 0.5f);
@@ -23,8 +21,6 @@ public class ColorModule extends Module {
         this.settings.add(red);
         this.settings.add(green);
         this.settings.add(blue);
-
-        settings.add(trans);
 
         this.settings.add(rainbow);
         this.settings.add(saturation);

@@ -10,7 +10,6 @@
     "MinecraftMixin",
     "MovementInputFromOptionsMixin",
     "NetworkManagerMixin",
-    "EntityPlayerSPMixin",
     "accessor.IMinecraft",
     "accessor.ICPacketPlayer"
   ]

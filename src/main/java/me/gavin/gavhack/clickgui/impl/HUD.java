@@ -21,6 +21,7 @@ public class HUD extends GuiScreen {
         this.components.add(new Inventory());
         this.components.add(new TPS());
         this.components.add(new ModList());
+        this.components.add(new FPS());
 
         int yOffset = panel.header.height;
         for (HUDComponent component : components) {

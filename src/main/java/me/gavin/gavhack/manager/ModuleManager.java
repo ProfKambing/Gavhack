@@ -29,6 +29,7 @@ public class ModuleManager {
 
     public void registerModules() {
         // Combat
+        this.modules.add(new Criticals());
         this.modules.add(new FootXP());
 
         // Movement

@@ -1,8 +1,12 @@
 package me.gavin.gavhack.clickgui.impl;
 
+import me.gavin.gavhack.Gavhack;
 import me.gavin.gavhack.clickgui.impl.hud.*;
+import me.gavin.gavhack.module.impl.HUDEditor;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiScreen;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class HUD extends GuiScreen {
@@ -21,6 +25,7 @@ public class HUD extends GuiScreen {
         this.components.add(new Inventory());
         this.components.add(new TPS());
         this.components.add(new ModList());
+        this.components.add(new FPS());
 
         int yOffset = panel.header.height;
         for (HUDComponent component : components) {
@@ -37,6 +42,23 @@ public class HUD extends GuiScreen {
 
         for (HUDComponent component : components) {
             component.render(mouseX, mouseY, partialTicks);
+        }
+
+        if (!panel.open)
+            return;
+
+        HUDEditor hudEditor = (HUDEditor) Gavhack.INSTANCE.moduleManager.getModule(HUDEditor.class);
+
+        if (!hudEditor.descriptions.value)
+            return;
+
+        for (HUDButton button : panel.buttons) {
+            if (button.isMouseInside(mouseX, mouseY)) {
+                String s = button.parent.description;
+                Gui.drawRect(mouseX + 5, mouseY - 10, mouseX + 8 + Gavhack.INSTANCE.fontRenderer.getStringWidth(s), mouseY - 10 + Gavhack.INSTANCE.fontRenderer.getHeight(), 0x80000000);
+                Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(s, mouseX + 6f, mouseY - 11f, new Color(-1));
+                return;
+            }
         }
     }
 

@@ -34,6 +34,7 @@ public class ModuleManager {
 
         // Movement
         this.modules.add(new Sprint());
+        this.modules.add(new Flight());
         this.modules.add(new GuiMove());
 
         // Render

@@ -26,7 +26,8 @@ public class Gavhack {
     public static final String MOD_ID = "gavhack";
     public static final String MOD_NAME = "Gavhack";
     public static final String VERSION = "v1.0";
-    public static final String PREFIX = "-";
+
+    public static String PREFIX = "-";
 
     @Mod.Instance(MOD_ID)
     public static Gavhack INSTANCE;

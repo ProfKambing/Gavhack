@@ -1,5 +1,6 @@
 package me.gavin.gavhack.manager;
 
+import me.gavin.gavhack.Gavhack;
 import me.gavin.gavhack.command.CMDExecutor;
 import me.gavin.gavhack.command.CommandBase;
 import net.minecraft.client.Minecraft;
@@ -13,10 +14,7 @@ public class CommandManager {
 
     public ArrayList<CommandBase> commands;
 
-    public String commandPrefix;
-
     public CommandManager() {
-        commandPrefix = "-";
         commands = new ArrayList<>();
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -32,7 +30,7 @@ public class CommandManager {
     }
 
     private String parseName(String rawMsg) {
-        return rawMsg.split(" ")[0].substring(commandPrefix.length() - 1);
+        return rawMsg.split(" ")[0].substring(Gavhack.PREFIX.length() - 1);
     }
 
     private String[] parseArgs(String rawMsg) {

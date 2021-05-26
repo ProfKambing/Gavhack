@@ -38,7 +38,7 @@ public class ModuleManager {
 
         // Render
         this.modules.add(new AntiFog());
-        this.modules.add(new PlayerESP());
+        this.modules.add(new ItemESP());
         this.modules.add(new Fullbright());
         this.modules.add(new Tracers());
         this.modules.add(new Nametags());

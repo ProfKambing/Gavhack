@@ -19,13 +19,15 @@ public class HUD extends GuiScreen {
         panel = new HUDPanel(10, 10, 75, 300, 12);
 
         // add components here
-        this.components.add(new Watermark());
-        this.components.add(new ServerIP());
-        this.components.add(new Ping());
-        this.components.add(new Inventory());
-        this.components.add(new TPS());
-        this.components.add(new ModList());
+        this.components.add(new Coords());
         this.components.add(new FPS());
+        this.components.add(new Inventory());
+        this.components.add(new ModList());
+        this.components.add(new NetherCoords());
+        this.components.add(new Ping());
+        this.components.add(new ServerIP());
+        this.components.add(new TPS());
+        this.components.add(new Watermark());
 
         int yOffset = panel.header.height;
         for (HUDComponent component : components) {

@@ -24,7 +24,7 @@ public class ChatSuffix extends Module {
 
     @SubscribeEvent
     public void onChat(ClientChatEvent event) {
-        String suffix = "  \u1d04\u1d1c\u1d0d\u029c\u1d00\u1d04\u1d0b";
+        String suffix = " | GavHack";
         if (event.getMessage().startsWith("/")) return;
         if (event.getMessage().startsWith("*")) return;
         if (event.getMessage().startsWith(".")) return;

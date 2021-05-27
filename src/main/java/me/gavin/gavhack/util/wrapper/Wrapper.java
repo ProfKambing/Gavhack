@@ -1,4 +1,4 @@
-package me.gavin.gavhack.wrapper;
+package me.gavin.gavhack.util.wrapper;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;

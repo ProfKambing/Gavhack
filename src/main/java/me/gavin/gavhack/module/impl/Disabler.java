@@ -28,6 +28,7 @@ public class Disabler extends Module {
         }
     };
 
+    @Override
     public void onEnable() {
         if (disablerModes.getMode().equals("Transaction")) {
             enableTransaction = true;

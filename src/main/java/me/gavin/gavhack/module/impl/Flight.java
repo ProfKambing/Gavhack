@@ -9,10 +9,10 @@ import net.minecraft.network.play.client.CPacketPlayerAbilities;
 public class Flight extends Module {
     public Flight() {
         super("Flight", "Allows you to fly.", Category.Movement);
-        settings.add(flightMode);
+        this.settings.add(flightMode);
     }
 
-    public ModeSetting flightMode = new ModeSetting(this, "Mode", "Vanilla", "Vanilla", "Funny");
+    public ModeSetting flightMode = new ModeSetting(this, "Mode", "Vanilla", "Vanilla", "Bypass");
 
     public void onEnable() {
         if (flightMode.getMode().equals("Vanilla")) {

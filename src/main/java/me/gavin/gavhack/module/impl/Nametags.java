@@ -6,6 +6,8 @@ import me.gavin.gavhack.module.Module;
 import me.gavin.quasar.Listener;
 import me.gavin.quasar.Register;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderGlobal;
+import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -36,9 +38,7 @@ public class Nametags extends Module {
             GlStateManager.pushMatrix();
             GlStateManager.translate(projection.x, projection.y, 0);
             String text = player.getName();
-            gavhack.fontRenderer.drawStringWithShadow(player.getName(),
-                    -(mc.fontRenderer.getStringWidth(player.getName()) / 2d),
-                    -(gavhack.fontRenderer.getHeight() + 0.2), new Color(-1));
+            gavhack.fontRenderer.drawStringWithShadow(player.getName(), -(mc.fontRenderer.getStringWidth(player.getName()) / 2d), -(gavhack.fontRenderer.getHeight() + 0.2), new Color(-1));
             GlStateManager.popMatrix();
         }
     };

@@ -31,8 +31,12 @@ public class NetherCoords extends HUDComponent {
 
         if(mc.player.dimension == -1) {
             scoords = "[" + posX + "]" + " " + "[" + posY + "]" + " " + "[" + posZ + "]";
-        }else {
+        }
+        if(mc.player.dimension == 0) {
             scoords = "[" + posX / 8 + "]" + " " + "[" + posY / 8 + "]" + " " + "[" + posZ / 8 + "]";
+        }
+        if(mc.player.dimension == 1) {
+            scoords = "[" + "I" + "]" + " " + "[" + "D" + "]" + " " + "[" + "K" + "]";
         }
 
         coords = "Nether Coords: " + ChatFormatting.RED + scoords;

@@ -48,7 +48,6 @@ public class ModuleManager {
         this.modules.add(new AutoSuicide());
         this.modules.add(new FastUse());
         this.modules.add(new FakePlayer());
-        this.modules.add(new PacketSender());
 
         //CHAT
         this.modules.add(new ChatSuffix());
@@ -58,11 +57,9 @@ public class ModuleManager {
         this.modules.add(new ClickGUI());
         this.modules.add(new HUDEditor());
         this.modules.add(new ColorModule());
-        this.modules.add(new Title());
 
         //MISC
         this.modules.add(new MCF());
-        this.modules.add(new Disconnect());
         this.modules.add(new LoginBypass());
         this.modules.add(new Disabler());
 

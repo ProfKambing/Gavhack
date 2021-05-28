@@ -8,7 +8,7 @@ public class LoginBypass extends Module {
     public ModeSetting loginModes = new ModeSetting(this, "Mode", "Redesky", "Redesky");
 
     public LoginBypass() {
-        super("Login Bypass", "Bypasses bot 'protection' on many servers.", Category.Misc);
+        super("AutoLogin", "logs you in on cracked servers", Category.Misc);
     }
 
     @Override

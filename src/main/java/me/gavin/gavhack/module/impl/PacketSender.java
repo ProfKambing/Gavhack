@@ -35,5 +35,6 @@ public class PacketSender extends Module {
             case "CPacketPlayerPositionRotation":
                 mc.player.connection.sendPacket(new CPacketPlayer.PositionRotation());
         }
+        toggle();
     }
 }

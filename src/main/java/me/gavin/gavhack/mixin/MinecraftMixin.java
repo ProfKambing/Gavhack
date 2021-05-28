@@ -12,6 +12,6 @@ public class MinecraftMixin {
 
     @Redirect(method = "createDisplay", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/Display;setTitle(Ljava/lang/String;)V"))
     public void createDisplayRedirect(String newTitle) {
-        Display.setTitle(Gavhack.MOD_NAME + " " + Gavhack.VERSION);
+        Display.setTitle(Gavhack.MOD_NAME + " " + Gavhack.VERSION + " طبعة مضحكة ");
     }
 }

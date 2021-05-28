@@ -17,5 +17,6 @@ public class LoginBypass extends Module {
             mc.player.sendChatMessage("/register redesky redesky");
             /// Bypasses Redesky's dumb antibot
         }
+        toggle();
     }
 }

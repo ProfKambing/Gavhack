@@ -11,6 +11,7 @@ public class Title extends Module {
 
     public Title() {
         super("Title", "Sets the title of the Minecraft window.", Category.Client);
+        this.settings.add(mode);
     }
 
     @Override

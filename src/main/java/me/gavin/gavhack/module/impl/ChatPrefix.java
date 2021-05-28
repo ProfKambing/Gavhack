@@ -13,6 +13,7 @@ public class ChatPrefix extends Module {
 
     public ChatPrefix() {
         super("ChatPrefix", "Changes the color of your chat message on some servers.", Category.Chat);
+        this.settings.add(mode);
     }
 
     @Override

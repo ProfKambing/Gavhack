@@ -5,7 +5,6 @@ import me.gavin.gavhack.mixin.accessor.ICPacketPlayer;
 import me.gavin.gavhack.module.Category;
 import me.gavin.gavhack.module.Module;
 import me.gavin.gavhack.setting.ModeSetting;
-import me.gavin.gavhack.util.wrapper.WrapperUtil;
 import me.gavin.quasar.Listener;
 import me.gavin.quasar.Register;
 import net.minecraft.init.Items;
@@ -33,10 +32,10 @@ public class FootXP extends Module {
                         || mc.player.getHeldItemMainhand().getItem() == Items.EXPERIENCE_BOTTLE) {
                     ((ICPacketPlayer) event.getPacket()).setPacketPitch(90f);
                     if (mc.player.getHeldItemOffhand().getItem() == Items.EXPERIENCE_BOTTLE) {
-                        WrapperUtil.TryUseItemRight();
+                        mc.player.connection.sendPacket(new CPacketPlayerTryUseItem(EnumHand.OFF_HAND)); }
                     }
                     else if (mc.player.getHeldItemMainhand().getItem() == Items.EXPERIENCE_BOTTLE) {
-                        WrapperUtil.TryUseItemLeft();
+                        mc.player.connection.sendPacket(new CPacketPlayerTryUseItem(EnumHand.OFF_HAND)); }
                     }
                 }
             }

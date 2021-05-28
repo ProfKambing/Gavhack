@@ -5,7 +5,6 @@ import me.gavin.gavhack.module.Module;
 import me.gavin.gavhack.setting.ModeSetting;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.client.CPacketPlayerAbilities;
-import me.gavin.gavhack.util.wrapper.Wrapper;
 
 public class Flight extends Module {
     public Flight() {
@@ -20,9 +19,9 @@ public class Flight extends Module {
             mc.player.capabilities.allowFlying = true;
         }
         else if (flightMode.getMode().equals("Funny")) {
-            Wrapper.net.sendPacket(new CPacketPlayer.Rotation());
-            Wrapper.net.sendPacket(new CPacketPlayerAbilities());
-            Wrapper.capabilities.allowFlying = true;
+            mc.player.connection.sendPacket(new CPacketPlayer.Rotation());
+            mc.player.connection.sendPacket(new CPacketPlayerAbilities());
+            mc.player.capabilities.allowFlying = true;
         }
     }
 

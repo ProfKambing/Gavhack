@@ -4,7 +4,6 @@ import me.gavin.gavhack.event.PacketEvent;
 import me.gavin.gavhack.module.Category;
 import me.gavin.gavhack.module.Module;
 import me.gavin.gavhack.setting.ModeSetting;
-import me.gavin.gavhack.util.wrapper.Wrapper;
 import me.gavin.quasar.Listener;
 import me.gavin.quasar.Register;
 import net.minecraft.network.play.client.CPacketConfirmTransaction;
@@ -34,8 +33,8 @@ public class Disabler extends Module {
             enableTransaction = true;
         }
         else if (disablerModes.getMode().equals("Funny")) {
-            Wrapper.net.sendPacket(new CPacketPlayerAbilities());
-            Wrapper.net.sendPacket(new CPacketPlayer.Position());
+            mc.player.connection.sendPacket(new CPacketPlayerAbilities());
+            mc.player.connection.sendPacket(new CPacketPlayer.Position());
             toggle();
         }
     }

@@ -15,6 +15,7 @@ public class LoginBypass extends Module {
     public void onEnable() {
         if (loginModes.getMode().equals("Redesky")) {
             mc.player.sendChatMessage("/register redesky redesky");
+            /// Bypasses Redesky's dumb antibot
         }
     }
 }

@@ -2,7 +2,6 @@ package me.gavin.gavhack.module.impl;
 
 import me.gavin.gavhack.module.Category;
 import me.gavin.gavhack.module.Module;
-import me.gavin.gavhack.util.wrapper.Wrapper;
 
 public class Disconnect extends Module {
 
@@ -12,7 +11,7 @@ public class Disconnect extends Module {
 
     @Override
     public void onEnable() {
-        Wrapper.net.sendPacket(new net.minecraft.network.play.server.SPacketDisconnect());
+        mc.player.connection.sendPacket(new net.minecraft.network.play.server.SPacketDisconnect());
     }
 
 }

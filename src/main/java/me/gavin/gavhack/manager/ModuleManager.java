@@ -58,6 +58,7 @@ public class ModuleManager {
         this.modules.add(new ClickGUI());
         this.modules.add(new HUDEditor());
         this.modules.add(new ColorModule());
+        this.modules.add(new Title());
 
         //MISC
         this.modules.add(new MCF());

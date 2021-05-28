@@ -14,6 +14,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import org.lwjgl.opengl.Display;
 
 @Mod(
         modid = Gavhack.MOD_ID,
@@ -87,6 +88,9 @@ public class Gavhack {
 
         tpsManager = new TpsManager();
         logger.info("TPS manager initialized");
+
+        Display.setTitle("> " + Gavhack.MOD_NAME + " " + Gavhack.VERSION);
+        logger.info("Set display title");
 
         logger.info(Gavhack.MOD_NAME + " finished initialization");
 

@@ -51,7 +51,6 @@ public class ModuleManager {
 
         //CHAT
         this.modules.add(new ChatSuffix());
-        this.modules.add(new ChatPrefix());
 
         // CLIENT
         this.modules.add(new ClickGUI());

@@ -1,5 +1,7 @@
 package me.gavin.gavhack.module.impl;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+import me.gavin.gavhack.event.ModeChangeEvent;
 import me.gavin.gavhack.event.PacketEvent;
 import me.gavin.gavhack.mixin.accessor.ICPacketPlayer;
 import me.gavin.gavhack.module.Category;
@@ -17,6 +19,11 @@ public class FootXP extends Module {
 
     public FootXP() {
         super("FootXP", "Looks down server-side when holding and using xp", Category.Combat);
+    }
+
+    @Override
+    public void onEnable() {
+        this.setMetadata(ChatFormatting.WHITE + "[" + useMode.getMode() + "]" + ChatFormatting.RESET);
     }
 
     @Register
@@ -39,6 +46,13 @@ public class FootXP extends Module {
                     }
                 }
             }
+        }
+    };
+
+    @Register
+    public Listener<ModeChangeEvent> modeChangeListener = event -> {
+        if(event.module == this) {
+            setMetadata(ChatFormatting.WHITE + "[" + event.newMode + "]" + ChatFormatting.RESET);
         }
     };
 }

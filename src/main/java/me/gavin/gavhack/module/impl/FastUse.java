@@ -4,6 +4,7 @@ import me.gavin.gavhack.mixin.accessor.IMinecraft;
 import me.gavin.gavhack.module.Category;
 import me.gavin.gavhack.module.Module;
 import me.gavin.gavhack.setting.BooleanSetting;
+import me.gavin.gavhack.setting.NumberSetting;
 import me.gavin.quasar.Listener;
 import me.gavin.quasar.Register;
 import net.minecraft.init.Items;

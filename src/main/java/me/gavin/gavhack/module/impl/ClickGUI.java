@@ -11,14 +11,12 @@ public class ClickGUI extends Module {
 
     public final BooleanSetting descriptions = new BooleanSetting(this, "Descriptions", true);
     public final BooleanSetting background = new BooleanSetting(this, "Background", false);
-    public final BooleanSetting transMode = new BooleanSetting(this, "Trans Mode", true);
 
     public ClickGUI() {
         super("ClickGUI", "Manage modules with a GUI", Category.Client);
         this.keybind.bind = Keyboard.KEY_RSHIFT;
         this.settings.add(descriptions);
         this.settings.add(background);
-        settings.add(transMode);
     }
 
     @Override

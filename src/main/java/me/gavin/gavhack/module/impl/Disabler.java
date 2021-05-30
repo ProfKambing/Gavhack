@@ -1,5 +1,7 @@
 package me.gavin.gavhack.module.impl;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+import me.gavin.gavhack.event.ModeChangeEvent;
 import me.gavin.gavhack.event.PacketEvent;
 import me.gavin.gavhack.module.Category;
 import me.gavin.gavhack.module.Module;
@@ -29,6 +31,7 @@ public class Disabler extends Module {
 
     @Override
     public void onEnable() {
+        this.setMetadata(ChatFormatting.WHITE + "[" + disablerModes.getMode() + "]" + ChatFormatting.RESET);
         if (disablerModes.getMode().equals("Transaction")) {
             enableTransaction = true;
         }
@@ -38,4 +41,11 @@ public class Disabler extends Module {
             toggle();
         }
     }
+
+    @Register
+    public Listener<ModeChangeEvent> modeChangeListener = event -> {
+        if(event.module == this) {
+            setMetadata(ChatFormatting.WHITE + "[" + event.newMode + "]" + ChatFormatting.RESET);
+        }
+    };
 }

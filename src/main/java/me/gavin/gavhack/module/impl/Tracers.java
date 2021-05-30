@@ -1,5 +1,9 @@
 package me.gavin.gavhack.module.impl;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+import me.gavin.gavhack.event.ModeChangeEvent;
+import me.gavin.gavhack.friends.Friend;
+import me.gavin.gavhack.friends.Friends;
 import me.gavin.gavhack.module.Category;
 import me.gavin.gavhack.module.Module;
 import me.gavin.gavhack.setting.BooleanSetting;
@@ -25,6 +29,7 @@ public class Tracers extends Module {
     private final BooleanSetting posts = new BooleanSetting(this, "Posts", true);
 
     private final BooleanSetting players = new BooleanSetting(this, "Players", true);
+    private final BooleanSetting friends = new BooleanSetting(this, "Friends", true);
     private final BooleanSetting mobs = new BooleanSetting(this, "Mobs", false);
     private final BooleanSetting animals = new BooleanSetting(this, "Animals", false);
     private final BooleanSetting items = new BooleanSetting(this, "Items", true);
@@ -46,6 +51,11 @@ public class Tracers extends Module {
     private final Color friendColor = Color.CYAN;
     private final Color monsterColor = Color.RED;
     private final Color animalColor = Color.GREEN;
+
+    @Override
+    public void onEnable() {
+        this.setMetadata(ChatFormatting.WHITE + "[" + colors.getMode() + "]" + ChatFormatting.RESET);
+    }
 
     @Register
     public final Listener<RenderWorldLastEvent> renderListener = event -> {
@@ -95,4 +105,9 @@ public class Tracers extends Module {
         }
         RenderUtil.release();
     }
+
+    @Register
+    public final Listener<ModeChangeEvent> modeChangeListener = event -> {
+        setMetadata(ChatFormatting.WHITE + "[" + event.newMode + "]" + ChatFormatting.RESET);
+    };
 }

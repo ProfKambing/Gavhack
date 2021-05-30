@@ -1,13 +1,13 @@
 package me.gavin.gavhack.util;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.BufferBuilder;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL32;
 
 import static org.lwjgl.opengl.GL11.*;
@@ -69,5 +69,24 @@ public class RenderUtil {
         bufferBuilder.pos(pos1.x, pos1.y, pos1.z).color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()).endVertex();
         bufferBuilder.pos(pos2.x, pos2.y, pos2.z).color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()).endVertex();
         tessellator.draw();
+    }
+
+    /**
+     * This is from Tracers.java just thought
+     * might as well since its pretty good :/
+     */
+    public static void drawLine(Entity e, Color color, float partialTicks) {
+        double lerpX = MathHelper.clampedLerp(e.lastTickPosX, e.posX, partialTicks);
+        double lerpY = MathHelper.clampedLerp(e.lastTickPosY, e.posY, partialTicks);
+        double lerpZ = MathHelper.clampedLerp(e.lastTickPosZ, e.posZ, partialTicks);
+        final Vec3d vec = new Vec3d(lerpX, lerpY, lerpZ).subtract(
+                Minecraft.getMinecraft().getRenderManager().viewerPosX,
+                Minecraft.getMinecraft().getRenderManager().viewerPosY,
+                Minecraft.getMinecraft().getRenderManager().viewerPosZ);
+
+        RenderUtil.prepare();
+        GL11.glShadeModel(GL11.GL_SMOOTH);
+        RenderUtil.line3d(ActiveRenderInfo.getCameraPosition(), vec, 1f, color);
+        RenderUtil.release();
     }
 }

@@ -39,7 +39,7 @@ public class ModuleManager {
 
         // RENDER
         this.modules.add(new AntiFog());
-        this.modules.add(new ItemESP());
+        this.modules.add(new ESP());
         this.modules.add(new Fullbright());
         this.modules.add(new Tracers());
         this.modules.add(new Nametags());

@@ -1,8 +1,12 @@
 package me.gavin.gavhack.module.impl;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+import me.gavin.gavhack.event.ModeChangeEvent;
 import me.gavin.gavhack.module.Category;
 import me.gavin.gavhack.module.Module;
 import me.gavin.gavhack.setting.ModeSetting;
+import me.gavin.quasar.Listener;
+import me.gavin.quasar.Register;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.client.CPacketPlayerAbilities;
 
@@ -15,6 +19,7 @@ public class Flight extends Module {
     public ModeSetting flightMode = new ModeSetting(this, "Mode", "Vanilla", "Vanilla", "Bypass");
 
     public void onEnable() {
+        this.setMetadata(ChatFormatting.WHITE + "[" + flightMode.getMode() + "]" + ChatFormatting.RESET);
         if (flightMode.getMode().equals("Vanilla")) {
             mc.player.capabilities.allowFlying = true;
         }
@@ -28,4 +33,11 @@ public class Flight extends Module {
     public void onDisable() {
         mc.player.capabilities.allowFlying = false;
     }
+
+    @Register
+    public Listener<ModeChangeEvent> modeChangeListener = event -> {
+        if(event.module == this) {
+            setMetadata(ChatFormatting.WHITE + "[" + event.newMode + "]" + ChatFormatting.RESET);
+        }
+    };
 }

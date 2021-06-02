@@ -2,13 +2,12 @@ package me.gavin.gavhack;
 
 import me.gavin.gavhack.clickgui.impl.GUI;
 import me.gavin.gavhack.clickgui.impl.HUD;
-import me.gavin.gavhack.friends.Friends;
+import me.gavin.gavhack.manager.FriendManager;
 import me.gavin.gavhack.manager.*;
 import me.gavin.gavhack.module.impl.ColorModule;
 import me.gavin.gavhack.util.ForgeEventTranslator;
 import me.gavin.gavhack.util.font.CFontLoader;
 import me.gavin.gavhack.util.font.CFontRenderer;
-import me.gavin.gavhack.util.font.SalFontRenderer;
 import me.gavin.quasar.EventSystem;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -41,7 +40,7 @@ public class Gavhack {
     public ColorModule colorModule;
     public DiscordManager discordManager;
     public ProjectionManager projectionManager;
-    public Friends friends;
+    public FriendManager friendManager;
     public GUI clickGui;
     public HUD hudEditor;
     public TpsManager tpsManager;
@@ -79,8 +78,8 @@ public class Gavhack {
         hudEditor = new HUD();
         logger.info("HUD editor initialized");
 
-        friends = new Friends();
-        logger.info("Friends initialized");
+        friendManager = new FriendManager();
+        logger.info("FriendManager initialized");
 
         new ForgeEventTranslator();
         logger.info("Forge event translator initialized");

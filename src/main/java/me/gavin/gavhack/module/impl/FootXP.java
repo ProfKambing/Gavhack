@@ -29,14 +29,11 @@ public class FootXP extends Module {
     @Register
     public final Listener<PacketEvent.Outgoing> packetListener = event -> {
         if (event.getPacket() instanceof CPacketPlayer) {
-            if (mc.player.getHeldItemOffhand().getItem() == Items.EXPERIENCE_BOTTLE
-                    || mc.player.getHeldItemMainhand().getItem() == Items.EXPERIENCE_BOTTLE && useMode.getMode().equals("Pitch")) {
+            if (mc.player.getHeldItemOffhand().getItem() == Items.EXPERIENCE_BOTTLE || mc.player.getHeldItemMainhand().getItem() == Items.EXPERIENCE_BOTTLE && useMode.getMode().equals("Pitch")) {
                 ((ICPacketPlayer) event.getPacket()).setPacketPitch(90f);
             }
-            else if (mc.player.getHeldItemOffhand().getItem() == Items.EXPERIENCE_BOTTLE
-                    || mc.player.getHeldItemMainhand().getItem() == Items.EXPERIENCE_BOTTLE && useMode.getMode().equals("Throw")) {
-                while (mc.player.getHeldItemOffhand().getItem() == Items.EXPERIENCE_BOTTLE
-                        || mc.player.getHeldItemMainhand().getItem() == Items.EXPERIENCE_BOTTLE) {
+            else if (mc.player.getHeldItemOffhand().getItem() == Items.EXPERIENCE_BOTTLE || mc.player.getHeldItemMainhand().getItem() == Items.EXPERIENCE_BOTTLE && useMode.getMode().equals("Throw")) {
+                while (mc.player.getHeldItemOffhand().getItem() == Items.EXPERIENCE_BOTTLE || mc.player.getHeldItemMainhand().getItem() == Items.EXPERIENCE_BOTTLE) {
                     ((ICPacketPlayer) event.getPacket()).setPacketPitch(90f);
                     if (mc.player.getHeldItemOffhand().getItem() == Items.EXPERIENCE_BOTTLE) {
                         mc.player.connection.sendPacket(new CPacketPlayerTryUseItem(EnumHand.OFF_HAND));

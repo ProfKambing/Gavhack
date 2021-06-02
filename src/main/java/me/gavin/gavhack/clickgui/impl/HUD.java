@@ -5,7 +5,6 @@ import me.gavin.gavhack.clickgui.impl.hud.*;
 import me.gavin.gavhack.module.impl.HUDEditor;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiScreen;
-
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -28,6 +27,7 @@ public class HUD extends GuiScreen {
         this.components.add(new ServerIP());
         this.components.add(new TPS());
         this.components.add(new Watermark());
+        this.components.add(new Welcomer());
 
         int yOffset = panel.header.height;
         for (HUDComponent component : components) {

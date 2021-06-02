@@ -12,6 +12,7 @@
     "NetworkManagerMixin",
     "RenderPlayerMixin",
     "accessor.ICPacketPlayer",
-    "accessor.IMinecraft"
+    "accessor.IMinecraft",
+    "accessor.IRenderManager"
   ]
 }

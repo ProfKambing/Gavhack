@@ -1,7 +1,7 @@
 package me.gavin.gavhack.module.impl;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
-import me.gavin.gavhack.friends.Friends;
+import me.gavin.gavhack.manager.FriendManager;
 import me.gavin.gavhack.module.Category;
 import me.gavin.gavhack.module.Module;
 import me.gavin.gavhack.util.MessageUtil;
@@ -34,11 +34,11 @@ public class MCF extends Module {
             if(result == null || result.typeOfHit != RayTraceResult.Type.ENTITY || !(result.entityHit instanceof EntityPlayer))
                 return;
 
-            if(Friends.isFriend(mc.objectMouseOver.entityHit.getName())) {
-                Friends.delFriend(mc.objectMouseOver.entityHit.getName());
+            if(FriendManager.isFriend(mc.objectMouseOver.entityHit.getName())) {
+                FriendManager.delFriend(mc.objectMouseOver.entityHit.getName());
                 MessageUtil.sendMessagePrefix(ChatFormatting.RED + "Removed " + ChatFormatting.LIGHT_PURPLE + mc.objectMouseOver.entityHit.getName() + ChatFormatting.WHITE + " from friends list");
             }else {
-                Friends.addFriend(mc.objectMouseOver.entityHit.getName());
+                FriendManager.addFriend(mc.objectMouseOver.entityHit.getName());
                 MessageUtil.sendMessagePrefix(ChatFormatting.GREEN + "Added " + ChatFormatting.LIGHT_PURPLE + mc.objectMouseOver.entityHit.getName() + ChatFormatting.WHITE + " to friends list");
             }
         }

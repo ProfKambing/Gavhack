@@ -29,8 +29,10 @@ public class ModuleManager {
 
     public void registerModules() {
         // COMBAT
+        this.modules.add(new BowFag());
         this.modules.add(new Criticals());
         this.modules.add(new FootXP());
+        this.modules.add(new Quiver());
 
         // MOVEMENT
         this.modules.add(new Sprint());
@@ -39,6 +41,7 @@ public class ModuleManager {
 
         // RENDER
         this.modules.add(new AntiFog());
+        this.modules.add(new BlockHighlight());
         this.modules.add(new ESP());
         this.modules.add(new Fullbright());
         this.modules.add(new Tracers());
@@ -58,6 +61,8 @@ public class ModuleManager {
         this.modules.add(new ColorModule());
 
         //MISC
+        this.modules.add(new AutoPorn());
+        this.modules.add(new AutoRespawn());
         this.modules.add(new MCF());
         this.modules.add(new LoginBypass());
         this.modules.add(new Disabler());

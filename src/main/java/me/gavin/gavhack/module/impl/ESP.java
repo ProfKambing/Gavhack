@@ -19,6 +19,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 
+/**
+ * @Created by gerald0mc!!!!
+ * gerald0mc not skidder??!?!?!?
+ */
+
 public class ESP extends Module {
     public ESP() {
         super("ESP", "Draws a box around stuff.", Category.Render);

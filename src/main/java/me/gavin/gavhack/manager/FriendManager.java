@@ -1,13 +1,15 @@
-package me.gavin.gavhack.friends;
+package me.gavin.gavhack.manager;
+
+import me.gavin.gavhack.friends.Friend;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Friends {
+public class FriendManager {
 
     public static List<Friend> friends;
 
-    public Friends(){
+    public FriendManager(){
         friends = new ArrayList<>();
     }
 

@@ -1,8 +1,10 @@
 package me.gavin.gavhack.module.impl;
 
+import me.gavin.gavhack.Gavhack;
 import me.gavin.gavhack.module.Category;
 import me.gavin.gavhack.module.Module;
 import me.gavin.gavhack.setting.BooleanSetting;
+import me.gavin.gavhack.setting.NumberSetting;
 import org.lwjgl.input.Keyboard;
 
 public class ClickGUI extends Module {

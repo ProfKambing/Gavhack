@@ -36,7 +36,8 @@ public class ModList extends HUDComponent {
                 if (m.enabled) {
                     ColorModule cm = (ColorModule) Gavhack.INSTANCE.moduleManager.getModule(ColorModule.class);
                     Color rgb = Gavhack.INSTANCE.colorManager.getRGBWave(cm.speed.value, cm.saturation.value, yOffset * 20L);
-                    Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(m.getMetaData() + m.name, (x + width) - Gavhack.INSTANCE.fontRenderer.getStringWidth(m.getMetaData() + m.name), y + yOffset, rgb);
+                    Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(m.getMetaData() + " " + m.name,
+                            x - Gavhack.INSTANCE.fontRenderer.getStringWidth(m.getMetaData() + m.name) + width - 1, y + yOffset, rgb);
                     yOffset += Gavhack.INSTANCE.fontRenderer.getHeight() + 1;
                 }
             }
@@ -47,7 +48,7 @@ public class ModList extends HUDComponent {
                 if (m.enabled) {
                     ColorModule cm = (ColorModule) Gavhack.INSTANCE.moduleManager.getModule(ColorModule.class);
                     Color rgb = Gavhack.INSTANCE.colorManager.getRGBWave(cm.speed.value, cm.saturation.value, yOffset * 20L);
-                    Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(m.name + m.getMetaData(), x, y + yOffset, rgb);
+                    Gavhack.INSTANCE.fontRenderer.drawStringWithShadow(m.name + " " + m.getMetaData(), x, y + yOffset, rgb);
                     yOffset += Gavhack.INSTANCE.fontRenderer.getHeight() + 1;
                 }
             }

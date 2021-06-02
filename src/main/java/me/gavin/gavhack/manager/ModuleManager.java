@@ -28,21 +28,43 @@ public class ModuleManager {
     }
 
     public void registerModules() {
-        // Combat
+        // COMBAT
+        this.modules.add(new BowFag());
+        this.modules.add(new Criticals());
+        this.modules.add(new FootXP());
 
-        // Movement
+        // MOVEMENT
         this.modules.add(new Sprint());
+        this.modules.add(new Flight());
+        this.modules.add(new GuiMove());
 
-        // Render
+        // RENDER
         this.modules.add(new AntiFog());
+        this.modules.add(new BlockHighlight());
+        this.modules.add(new ESP());
         this.modules.add(new Fullbright());
+        this.modules.add(new Tracers());
+        this.modules.add(new Nametags());
 
-        // Player
+        // PLAYER
+        this.modules.add(new AutoSuicide());
+        this.modules.add(new FastUse());
+        this.modules.add(new FakePlayer());
 
-        // Client
+        //CHAT
+        this.modules.add(new ChatSuffix());
+
+        // CLIENT
         this.modules.add(new ClickGUI());
         this.modules.add(new HUDEditor());
         this.modules.add(new ColorModule());
+
+        //MISC
+        this.modules.add(new AutoPorn());
+        this.modules.add(new AutoRespawn());
+        this.modules.add(new MCF());
+        this.modules.add(new LoginBypass());
+        this.modules.add(new Disabler());
 
         this.sortedModules.addAll(modules);
         this.sortedModules.sort(this::sortByLength);

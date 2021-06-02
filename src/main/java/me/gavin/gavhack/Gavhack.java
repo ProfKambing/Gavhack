@@ -2,11 +2,12 @@ package me.gavin.gavhack;
 
 import me.gavin.gavhack.clickgui.impl.GUI;
 import me.gavin.gavhack.clickgui.impl.HUD;
+import me.gavin.gavhack.manager.FriendManager;
 import me.gavin.gavhack.manager.*;
+import me.gavin.gavhack.module.impl.ColorModule;
 import me.gavin.gavhack.util.ForgeEventTranslator;
 import me.gavin.gavhack.util.font.CFontLoader;
 import me.gavin.gavhack.util.font.CFontRenderer;
-import me.gavin.gavhack.util.font.SalFontRenderer;
 import me.gavin.quasar.EventSystem;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,6 +26,8 @@ public class Gavhack {
     public static final String MOD_NAME = "Gavhack";
     public static final String VERSION = "v1.0";
 
+    public static String PREFIX = "-";
+
     @Mod.Instance(MOD_ID)
     public static Gavhack INSTANCE;
 
@@ -32,9 +35,12 @@ public class Gavhack {
     public EventSystem eventSys;
     public CFontRenderer fontRenderer;
     public ModuleManager moduleManager;
+    public CommandManager commandManager;
     public ColorManager colorManager;
+    public ColorModule colorModule;
     public DiscordManager discordManager;
     public ProjectionManager projectionManager;
+    public FriendManager friendManager;
     public GUI clickGui;
     public HUD hudEditor;
     public TpsManager tpsManager;
@@ -57,6 +63,9 @@ public class Gavhack {
         moduleManager = new ModuleManager();
         logger.info("Module manager initialized");
 
+        commandManager = new CommandManager();
+        logger.info("Command manager initialized");
+
         colorManager = new ColorManager();
         logger.info("Color manager initialized");
 
@@ -68,6 +77,9 @@ public class Gavhack {
 
         hudEditor = new HUD();
         logger.info("HUD editor initialized");
+
+        friendManager = new FriendManager();
+        logger.info("FriendManager initialized");
 
         new ForgeEventTranslator();
         logger.info("Forge event translator initialized");

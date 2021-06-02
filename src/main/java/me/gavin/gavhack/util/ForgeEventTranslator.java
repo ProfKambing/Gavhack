@@ -30,6 +30,7 @@ public class ForgeEventTranslator {
 
     @SubscribeEvent
     public void onRenderWorld(RenderWorldLastEvent event) {
+        Gavhack.INSTANCE.projectionManager.updateMatrix();
         Gavhack.INSTANCE.eventSys.post(event);
     }
 

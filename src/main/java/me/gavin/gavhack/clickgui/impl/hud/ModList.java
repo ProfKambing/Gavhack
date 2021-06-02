@@ -22,19 +22,12 @@ public class ModList extends HUDComponent {
 
     private boolean upsideDown = false;
     private List<Module> list;
+    private ScaledResolution sr;
 
     @Override
     public void drawInHud() {
-        ScaledResolution sr = new ScaledResolution(mc);
+        sr = new ScaledResolution(mc);
         list = Gavhack.INSTANCE.moduleManager.sortedModules;
-
-        // if its on the bottom half on the screen
-        if (y + (height / 2) > sr.getScaledHeight() / 2) {
-            list = Lists.reverse(list);
-            upsideDown = true;
-        } else {
-            upsideDown = false;
-        }
 
         // if its on the right side of the screen
         if (x + (width / 2) > sr.getScaledWidth() / 2) {
@@ -64,21 +57,22 @@ public class ModList extends HUDComponent {
 
     @Override
     public void onUpdate() {
-        if (list != null) {
-            if (upsideDown) {
-                Module m = list.get(list.size() - 1);
-                this.width = Gavhack.INSTANCE.fontRenderer.getStringWidth(m.name + m.getMetaData());
-            } else {
-                Module m = list.get(0);
+        if (list != null || sr != null) {
+            Module m = list.get(0);
+            if (x + (width / 2) > sr.getScaledWidth() / 2) {
                 this.width = Gavhack.INSTANCE.fontRenderer.getStringWidth(m.name + m.getMetaData()) + 1;
+            } else {
+                this.width = Gavhack.INSTANCE.fontRenderer.getStringWidth(m.getMetaData() + m.name) + 1;
             }
 
             int tempHeight = 0;
-            for (Module m : list) {
-                if (m.enabled) {
+            for (Module mod : list) {
+                if (mod.enabled) {
                     tempHeight += Gavhack.INSTANCE.fontRenderer.getHeight() + 1;
                 }
             }
+
+
 
             this.height = tempHeight;
         }

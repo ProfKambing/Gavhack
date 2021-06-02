@@ -3,7 +3,6 @@ package me.gavin.gavhack.module.impl;
 import com.mojang.realmsclient.gui.ChatFormatting;
 import me.gavin.gavhack.event.ModeChangeEvent;
 import me.gavin.gavhack.friends.Friend;
-import me.gavin.gavhack.friends.Friends;
 import me.gavin.gavhack.module.Category;
 import me.gavin.gavhack.module.Module;
 import me.gavin.gavhack.setting.BooleanSetting;

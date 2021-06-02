@@ -32,7 +32,6 @@ public class ModuleManager {
         this.modules.add(new BowFag());
         this.modules.add(new Criticals());
         this.modules.add(new FootXP());
-        this.modules.add(new Quiver());
 
         // MOVEMENT
         this.modules.add(new Sprint());

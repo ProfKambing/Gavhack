@@ -27,7 +27,6 @@ public class ChatSuffix extends Module {
     @Override
     public void onEnable() {
         MinecraftForge.EVENT_BUS.register(this);
-        this.setMetadata(ChatFormatting.WHITE + "[" + mode.getMode() + "]" + ChatFormatting.RESET);
     }
 
     @Override
@@ -48,11 +47,4 @@ public class ChatSuffix extends Module {
             event.setMessage(event.getMessage() + normalSuffix);
         }
     }
-
-    @Register
-    public Listener<ModeChangeEvent> modeChangeListener = event -> {
-        if(event.module == this) {
-            setMetadata(ChatFormatting.WHITE + "[" + event.newMode + "]" + ChatFormatting.RESET);
-        }
-    };
 }

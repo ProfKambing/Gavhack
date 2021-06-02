@@ -1,5 +1,7 @@
 package me.gavin.gavhack.module.impl;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+import me.gavin.gavhack.event.ModeChangeEvent;
 import me.gavin.gavhack.module.Category;
 import me.gavin.gavhack.module.Module;
 import me.gavin.gavhack.setting.ModeSetting;
@@ -40,6 +42,11 @@ public class BlockHighlight extends Module {
     private boolean box = false;
     private boolean outline = false;
 
+    @Override
+    public void onEnable() {
+        this.setMetadata(ChatFormatting.WHITE + "[" + mode.getMode() + "]" + ChatFormatting.RESET);
+    }
+
     @Register
     public final Listener<RenderWorldLastEvent> eventListener = event -> {
         RayTraceResult rayTraceResult = mc.objectMouseOver;
@@ -73,6 +80,13 @@ public class BlockHighlight extends Module {
                     RenderUtil.release();
                 }
             }
+        }
+    };
+
+    @Register
+    public Listener<ModeChangeEvent> modeChangeListener = event -> {
+        if(event.module == this) {
+            setMetadata(ChatFormatting.WHITE + "[" + event.newMode + "]" + ChatFormatting.RESET);
         }
     };
 }

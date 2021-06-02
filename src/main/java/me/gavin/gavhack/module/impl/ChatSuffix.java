@@ -19,10 +19,11 @@ public class ChatSuffix extends Module {
         settings.add(mode);
     }
 
-    public final ModeSetting mode = new ModeSetting(this, "Suffix Mode", "Normal", "Normal", "Tranny");
+    public final ModeSetting mode = new ModeSetting(this, "Suffix Mode", "Normal", "Normal", "Tranny", "Advertisement");
 
     private final String normalSuffix = " | GavHack";
     private final String transSuffix = " | GavHack Trans Edition <3";
+    private final String adSuffix = " | GavHack | https://discord.gg/usCEy8yF7m";
 
     @Override
     public void onEnable() {
@@ -43,7 +44,9 @@ public class ChatSuffix extends Module {
         if (event.getMessage().contains(transSuffix)) return;
         if (mode.getMode().equals("Tranny")) {
             event.setMessage(event.getMessage() + transSuffix);
-        } else {
+        }else if(mode.getMode().equals("Advertisement")) {
+            event.setMessage(event.getMessage() + adSuffix);
+        }else {
             event.setMessage(event.getMessage() + normalSuffix);
         }
     }

@@ -3,6 +3,7 @@ package me.gavin.gavhack.module.impl;
 import me.gavin.gavhack.Gavhack;
 import me.gavin.gavhack.module.Category;
 import me.gavin.gavhack.module.Module;
+import me.gavin.gavhack.setting.BooleanSetting;
 import me.gavin.quasar.Listener;
 import me.gavin.quasar.Register;
 import net.minecraft.client.renderer.GlStateManager;
@@ -21,6 +22,8 @@ public class Nametags extends Module {
         super("Nametags", "Better nametags", Category.Render);
     }
 
+    public final BooleanSetting playerHealth = new BooleanSetting(this, "Health", true);
+
     @Register
     public final Listener<RenderGameOverlayEvent.Text> render2dListener = event -> {
         for (EntityPlayer player : mc.world.playerEntities) {
@@ -38,7 +41,12 @@ public class Nametags extends Module {
             GlStateManager.pushMatrix();
             GlStateManager.translate(projection.x, projection.y, 0);
             String text = player.getName();
+            float health = player.getHealth();
+            String health2 = String.valueOf(health);
             gavhack.fontRenderer.drawStringWithShadow(player.getName(), -(mc.fontRenderer.getStringWidth(player.getName()) / 2d), -(gavhack.fontRenderer.getHeight() + 0.2), new Color(-1));
+            if(playerHealth.value) {
+                gavhack.fontRenderer.drawStringWithShadow(health2, -(mc.fontRenderer.getStringWidth(player.getName()) / 2d) + 27, -(gavhack.fontRenderer.getHeight() + 0.2), new Color(0, 255, 0, 255));
+            }
             GlStateManager.popMatrix();
         }
     };

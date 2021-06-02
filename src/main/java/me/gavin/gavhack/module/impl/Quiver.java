@@ -1,6 +1,7 @@
 package me.gavin.gavhack.module.impl;
 
 import me.gavin.gavhack.event.PacketEvent;
+import me.gavin.gavhack.mixin.accessor.ICPacketPlayer;
 import me.gavin.gavhack.module.Category;
 import me.gavin.gavhack.module.Module;
 import me.gavin.quasar.Listener;
@@ -16,9 +17,9 @@ public class Quiver extends Module {
 
     @Register
     public final Listener<PacketEvent.Outgoing> packetListener = event -> {
-        if(event.getPacket() instanceof CPacketPlayerTryUseItem) {
+        if(event.getPacket() instanceof CPacketPlayer) {
             if(mc.player.getHeldItemMainhand().getItem() == Items.BOW && mc.player.isHandActive()) {
-                mc.player.connection.sendPacket(new CPacketPlayer.Rotation( -90, mc.player.rotationYaw, true));
+                ((ICPacketPlayer) (CPacketPlayer) event.getPacket()).setPacketPitch(-90f);
                 mc.player.connection.sendPacket(new CPacketPlayerTryUseItem(mc.player.getActiveHand()));
                 mc.player.stopActiveHand();
             }

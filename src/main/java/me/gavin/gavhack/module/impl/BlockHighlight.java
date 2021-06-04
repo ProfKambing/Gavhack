@@ -32,12 +32,12 @@ public class BlockHighlight extends Module {
 
     public final ModeSetting mode = new ModeSetting(this, "Render Mode", "Outline", "Both", "Box", "Outline");
     public final NumberSetting lineWidth = new NumberSetting(this, "Line Width", 1, 0, 5, 0.1f);
-    public final NumberSetting rBox = new NumberSetting(this, "Red Box", 255, 1, 255, 1);
-    public final NumberSetting gBox = new NumberSetting(this, "Green Box", 255, 1, 255, 1);
-    public final NumberSetting bBox = new NumberSetting(this, "Blue Box", 255, 1, 255, 1);
-    public final NumberSetting rOutline = new NumberSetting(this, "Red Outline", 255, 1, 255, 1);
-    public final NumberSetting gOutline = new NumberSetting(this, "Green Outline", 255, 1, 255, 1);
-    public final NumberSetting bOutline = new NumberSetting(this, "Blue Outline", 255, 1, 255, 1);
+    public final NumberSetting rBox = new NumberSetting(this, "Red Box", 255, 1, 255, 0.1f);
+    public final NumberSetting gBox = new NumberSetting(this, "Green Box", 255, 1, 255, 0.1f);
+    public final NumberSetting bBox = new NumberSetting(this, "Blue Box", 255, 1, 255, 0.1f);
+    public final NumberSetting rOutline = new NumberSetting(this, "Red Outline", 255, 1, 255, 0.1f);
+    public final NumberSetting gOutline = new NumberSetting(this, "Green Outline", 255, 1, 255, 0.1f);
+    public final NumberSetting bOutline = new NumberSetting(this, "Blue Outline", 255, 1, 255, 0.1f);
 
     private boolean box = false;
     private boolean outline = false;

@@ -29,6 +29,7 @@ public class ModuleManager {
 
     public void registerModules() {
         // COMBAT
+        this.modules.add(new AutoLog());
         this.modules.add(new BowFag());
         this.modules.add(new Criticals());
         this.modules.add(new FootXP());
@@ -46,15 +47,17 @@ public class ModuleManager {
         this.modules.add(new Fullbright());
         this.modules.add(new Tracers());
         this.modules.add(new Nametags());
+        this.modules.add(new StorageESP());
 
         // PLAYER
         this.modules.add(new AutoSuicide());
         this.modules.add(new FastUse());
         this.modules.add(new FakePlayer());
+        this.modules.add(new PotionAlert());
 
         //CHAT
-        this.modules.add(new BedLocate());
         this.modules.add(new ChatSuffix());
+        this.modules.add(new GhastNotifier());
 
         // CLIENT
         this.modules.add(new ClickGUI());

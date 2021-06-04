@@ -8,5 +8,4 @@ public class Search extends Module {
         super("Search", "Draws a tracer to blocks.", Category.Render);
     }
 
-
 }

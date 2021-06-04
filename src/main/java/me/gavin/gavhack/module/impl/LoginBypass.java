@@ -13,6 +13,7 @@ public class LoginBypass extends Module {
 
     public LoginBypass() {
         super("AutoLogin", "logs you in on cracked servers", Category.Misc);
+        settings.add(loginModes);
     }
 
     @Override

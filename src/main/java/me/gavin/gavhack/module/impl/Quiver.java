@@ -15,12 +15,11 @@ public class Quiver extends Module {
         super("Quiver", "Ching chong quiver :O", Category.Combat);
     }
 
-    @Register
+        @Register
     public final Listener<PacketEvent.Outgoing> packetListener = event -> {
         if(event.getPacket() instanceof CPacketPlayer) {
             if(mc.player.getHeldItemMainhand().getItem() == Items.BOW && mc.player.isHandActive()) {
-                ((ICPacketPlayer) (CPacketPlayer) event.getPacket()).setPacketPitch(-90f);
-                mc.player.connection.sendPacket(new CPacketPlayerTryUseItem(mc.player.getActiveHand()));
+                ((ICPacketPlayer) event.getPacket()).setPacketPitch(-90f);
                 mc.player.stopActiveHand();
             }
         }

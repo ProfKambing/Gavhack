@@ -10,7 +10,7 @@ import java.net.URI;
 
 public class AutoPorn extends Module {
     public AutoPorn() {
-        super("AutoPorn", ";)", Category.Misc);
+        super("AutoPorn", "astaghfirullah brother this is haram", Category.Misc);
         settings.add(mode);
     }
 

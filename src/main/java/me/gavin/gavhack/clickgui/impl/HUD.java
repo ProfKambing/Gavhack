@@ -25,6 +25,7 @@ public class HUD extends GuiScreen {
         this.components.add(new NetherCoords());
         this.components.add(new Ping());
         this.components.add(new ServerIP());
+        this.components.add(new Time());
         this.components.add(new TPS());
         this.components.add(new Watermark());
         this.components.add(new Welcomer());

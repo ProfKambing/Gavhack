@@ -18,6 +18,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class AutoRespawn extends Module {
     public AutoRespawn() {
         super("AutoRespawn", "Automatically will respawn you and tell you coords in chat.", Category.Misc);
+        settings.add(respawn);
+        settings.add(deathCoords);
+        settings.add(antiDeathScreen);
     }
 
     public final BooleanSetting respawn = new BooleanSetting(this, "Respawn", true);

@@ -19,6 +19,7 @@ public class FootXP extends Module {
 
     public FootXP() {
         super("FootXP", "Looks down server-side when holding and using xp", Category.Combat);
+        settings.add(useMode);
     }
 
     @Override

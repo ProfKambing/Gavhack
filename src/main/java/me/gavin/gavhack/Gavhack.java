@@ -4,6 +4,7 @@ import me.gavin.gavhack.clickgui.impl.GUI;
 import me.gavin.gavhack.clickgui.impl.HUD;
 import me.gavin.gavhack.manager.FriendManager;
 import me.gavin.gavhack.manager.*;
+import me.gavin.gavhack.module.impl.ClickGUI;
 import me.gavin.gavhack.module.impl.ColorModule;
 import me.gavin.gavhack.util.ForgeEventTranslator;
 import me.gavin.gavhack.util.font.CFontLoader;
@@ -41,8 +42,9 @@ public class Gavhack {
     public DiscordManager discordManager;
     public ProjectionManager projectionManager;
     public FriendManager friendManager;
-    public GUI clickGui;
+    public GUI gui;
     public HUD hudEditor;
+    public ClickGUI clickGUI;
     public TpsManager tpsManager;
 
     @Mod.EventHandler
@@ -72,7 +74,7 @@ public class Gavhack {
         projectionManager = new ProjectionManager();
         logger.info("Projection manager initialized");
 
-        clickGui = new GUI();
+        gui = new GUI();
         logger.info("Click GUI initialized");
 
         hudEditor = new HUD();
